@@ -1,0 +1,1694 @@
+:root {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: #f7fafc;
+  background: #0d151a;
+
+  font-synthesis: none;
+}
+
+
+/* ==================================================
+   GLOBAL
+================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+
+body {
+  min-width: 320px;
+  background: #0d151a;
+}
+
+
+button {
+  font: inherit;
+}
+
+
+/* ==================================================
+   PAGE
+================================================== */
+
+.shell {
+  position: relative;
+
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  padding:
+    clamp(
+      12px,
+      2vw,
+      28px
+    );
+
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      rgba(148, 221, 183, 0.12),
+      transparent 26rem
+    ),
+    linear-gradient(
+      145deg,
+      #111c22 0%,
+      #0c1419 55%,
+      #101a1e 100%
+    );
+}
+
+
+.shell.day {
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      rgba(187, 236, 207, 0.16),
+      transparent 28rem
+    ),
+    radial-gradient(
+      circle at 88% 18%,
+      rgba(127, 187, 219, 0.10),
+      transparent 26rem
+    ),
+    linear-gradient(
+      145deg,
+      #15242a 0%,
+      #0e171c 58%,
+      #101a1e 100%
+    );
+}
+
+
+.shell.night {
+  background:
+    radial-gradient(
+      circle at 14% 8%,
+      rgba(77, 108, 144, 0.14),
+      transparent 30rem
+    ),
+    radial-gradient(
+      circle at 82% 12%,
+      rgba(86, 78, 142, 0.10),
+      transparent 30rem
+    ),
+    linear-gradient(
+      145deg,
+      #10181f 0%,
+      #081015 56%,
+      #0a1218 100%
+    );
+}
+
+
+.center {
+  display: grid;
+  place-items: center;
+}
+
+
+.dashboard {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1500px;
+
+  margin: 0 auto;
+}
+
+
+/* ==================================================
+   SHARED GLASS
+================================================== */
+
+header,
+footer,
+.hero-card,
+.square-dashboard-card {
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.09);
+
+  box-shadow:
+    0 24px 70px
+      rgba(0, 0, 0, 0.22),
+    inset
+      0 1px 0
+      rgba(255, 255, 255, 0.04);
+
+  backdrop-filter:
+    blur(16px);
+}
+
+
+/* ==================================================
+   HEADER
+================================================== */
+
+header {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 24px;
+
+  padding:
+    17px 22px;
+
+  margin-bottom: 12px;
+
+  border-radius: 24px;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+}
+
+
+.kicker,
+.updated {
+  color: #9eb1aa;
+
+  font-size: 0.74rem;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+}
+
+
+h1 {
+  margin:
+    5px 0 0;
+
+  font-size:
+    clamp(
+      1.8rem,
+      3vw,
+      3rem
+    );
+
+  line-height: 1;
+
+  letter-spacing:
+    -0.04em;
+}
+
+
+/* ==================================================
+   HERO CARD
+================================================== */
+
+.hero-card {
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 0;
+
+  overflow: hidden;
+
+  border-radius: 34px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.075),
+      rgba(255, 255, 255, 0.022)
+    );
+}
+
+
+/*
+   Extra bottom padding gives the weather information
+   some breathing room before the Frog artwork begins.
+
+   The background remains the same, so it still blends
+   naturally into the dark sky of the image.
+*/
+
+.hero-copy {
+  position: relative;
+
+  z-index: 3;
+
+  width: 100%;
+
+  padding:
+    34px
+    clamp(
+      36px,
+      4vw,
+      64px
+    )
+    52px;
+}
+
+
+/* ==================================================
+   MAIN INFO LAYOUT
+
+   LEFT:
+      CONDITION
+      TEMPERATURE
+      CAPTION
+
+   RIGHT:
+      4 × 2 METRICS
+
+   Both sides remain roughly the same height.
+================================================== */
+
+.hero-main {
+  display: grid;
+
+  grid-template-columns:
+    minmax(
+      270px,
+      340px
+    )
+    minmax(
+      0,
+      800px
+    );
+
+  grid-template-areas:
+    "condition meta"
+    "temp      meta";
+
+  grid-template-rows:
+    42px 1fr;
+
+  justify-content: space-between;
+
+  align-items: stretch;
+
+  column-gap:
+    clamp(
+      34px,
+      5vw,
+      90px
+    );
+
+  row-gap: 5px;
+}
+
+
+/* ==================================================
+   CONDITION
+================================================== */
+
+.hero-condition {
+  grid-area: condition;
+
+  display: grid;
+
+  place-items: center;
+
+  justify-self: center;
+
+  align-self: center;
+
+  width: auto;
+  height: auto;
+
+  margin: 0;
+}
+
+
+.hero-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  min-height: 39px;
+
+  padding:
+    7px 15px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.05);
+
+  color: #d7e2dd;
+
+  font-size: 1rem;
+
+  white-space: nowrap;
+
+  box-shadow:
+    inset
+    0 1px 0
+    rgba(255, 255, 255, 0.035);
+}
+
+
+.weather-icon {
+  font-size: 1.18em;
+
+  line-height: 1;
+}
+
+
+/* ==================================================
+   TEMPERATURE
+================================================== */
+
+.hero-temp-block {
+  grid-area: temp;
+
+  display: grid;
+
+  justify-items: center;
+
+  align-content: center;
+
+  justify-self: center;
+
+  align-self: stretch;
+
+  width: max-content;
+}
+
+
+.temperature {
+  color: #f7fafc;
+
+  font-size:
+    clamp(
+      7.5rem,
+      10vw,
+      10rem
+    );
+
+  line-height: 0.77;
+
+  font-weight: 680;
+
+  letter-spacing: -0.085em;
+
+  white-space: nowrap;
+
+  text-shadow:
+    0 10px 40px
+    rgba(0, 0, 0, 0.12);
+}
+
+
+.hero-temp-caption {
+  margin-top: 10px;
+
+  color: #869a93;
+
+  font-size: 0.76rem;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+
+  text-align: center;
+
+  white-space: nowrap;
+}
+
+
+/* ==================================================
+   METRIC GRID
+================================================== */
+
+.hero-meta {
+  grid-area: meta;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  grid-template-rows:
+    repeat(
+      2,
+      1fr
+    );
+
+  gap: 10px;
+
+  width: 100%;
+  max-width: 800px;
+
+  justify-self: end;
+
+  align-self: stretch;
+}
+
+
+/* ==================================================
+   METRIC TILES
+================================================== */
+
+.hero-meta-card {
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  min-width: 0;
+
+  min-height: 78px;
+
+  padding:
+    11px 13px;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.065);
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.027)
+    );
+
+  box-shadow:
+    inset
+    0 1px 0
+    rgba(255, 255, 255, 0.035);
+}
+
+
+.hero-meta-label {
+  display: block;
+
+  overflow: hidden;
+
+  margin-bottom: 5px;
+
+  color: #81958e;
+
+  font-size: 0.63rem;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+
+.hero-meta-value {
+  overflow: hidden;
+
+  color: #edf4f1;
+
+  font-size:
+    clamp(
+      1rem,
+      1.5vw,
+      1.28rem
+    );
+
+  font-weight: 540;
+
+  line-height: 1;
+
+  letter-spacing: -0.02em;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+
+.hero-meta-sub {
+  overflow: hidden;
+
+  margin-top: 4px;
+
+  color: #849991;
+
+  font-size: 0.58rem;
+
+  letter-spacing: 0.055em;
+
+  text-transform: uppercase;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+
+/* ==================================================
+   FROG SHARED
+================================================== */
+
+.frog-card {
+  position: relative;
+
+  width: 100%;
+
+  padding: 0;
+
+  overflow: hidden;
+
+  background: transparent;
+}
+
+
+/* ==================================================
+   WIDE FROG
+
+   At narrower widths the artwork stops shrinking.
+   Instead, the sides are cropped.
+================================================== */
+
+.hero-card
+.frog-card.wide {
+  position: relative;
+
+  width: 100%;
+
+  height: auto;
+
+  margin: 0;
+
+  overflow: hidden;
+
+  border-radius: 0;
+}
+
+
+.frog-wide-image {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+
+  max-width: none;
+
+  height: auto;
+
+  margin: 0;
+
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+
+  object-fit: initial;
+
+  object-position:
+    center bottom;
+}
+
+
+/* ==================================================
+   SQUARE BACKUP
+================================================== */
+
+.frog-card.square {
+  position: relative;
+
+  aspect-ratio: 1 / 1;
+
+  overflow: hidden;
+}
+
+
+.frog-scene {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+}
+
+
+.scene-layer {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: contain;
+
+  pointer-events: none;
+}
+
+
+.layer-1 {
+  z-index: 1;
+}
+
+
+.layer-2 {
+  z-index: 2;
+}
+
+
+.layer-3 {
+  z-index: 3;
+}
+
+
+/* ==================================================
+   SQUARE BACKUP DASHBOARD
+================================================== */
+
+.square-dashboard-card {
+  width:
+    min(
+      100%,
+      780px
+    );
+
+  margin: 0 auto;
+
+  overflow: hidden;
+
+  border-radius: 30px;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+}
+
+
+.square-hero-frame {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  overflow: hidden;
+}
+
+
+.square-hero-frame
+> .frog-card.square {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+
+  border-radius: 0;
+}
+
+
+.square-weather-overlay {
+  position: absolute;
+
+  z-index: 10;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  padding:
+    18px;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(6, 12, 17, 0.92) 0%,
+      rgba(6, 12, 17, 0.78) 56%,
+      rgba(6, 12, 17, 0.3) 82%,
+      transparent 100%
+    );
+}
+
+
+.square-top-panel {
+  display: grid;
+
+  grid-template-columns:
+    150px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap: 14px;
+}
+
+
+.square-temp-column {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  width: max-content;
+}
+
+
+.square-temperature {
+  color: #f4f8f6;
+
+  font-size: 6rem;
+
+  line-height: 0.8;
+
+  font-weight: 690;
+
+  letter-spacing: -0.085em;
+
+  white-space: nowrap;
+}
+
+
+.square-temp-caption {
+  margin-top: 7px;
+
+  color: #8ea29b;
+
+  font-size: 0.58rem;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+}
+
+
+.square-info-column {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+
+  min-width: 0;
+}
+
+
+.square-condition-line {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 8px;
+}
+
+
+.square-condition-pill {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding:
+    5px 10px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.09);
+
+  border-radius: 999px;
+
+  background:
+    rgba(17, 27, 33, 0.48);
+
+  color: #eef4f1;
+}
+
+
+.square-overlay-time {
+  color:
+    rgba(235, 242, 239, 0.68);
+
+  font-size: 0.6rem;
+}
+
+
+.square-mini-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap: 5px;
+}
+
+
+.square-mini-card {
+  display: grid;
+
+  grid-template-columns:
+    1fr auto;
+
+  grid-template-areas:
+    "label value"
+    "sub sub";
+
+  min-height: 36px;
+
+  padding:
+    5px 7px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.075);
+
+  border-radius: 9px;
+
+  background:
+    rgba(14, 23, 29, 0.34);
+}
+
+
+.square-mini-label {
+  grid-area: label;
+
+  color: #8ea29b;
+
+  font-size: 0.43rem;
+
+  text-transform: uppercase;
+}
+
+
+.square-mini-value {
+  grid-area: value;
+
+  color: #f0f5f3;
+
+  font-size: 0.7rem;
+
+  text-align: right;
+}
+
+
+.square-mini-sub {
+  grid-area: sub;
+
+  margin-top: 2px;
+
+  color: #7f938c;
+
+  font-size: 0.36rem;
+
+  text-align: right;
+
+  text-transform: uppercase;
+}
+
+
+/* ==================================================
+   FOOTER
+================================================== */
+
+footer {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 14px;
+
+  margin-top: 12px;
+
+  padding:
+    12px 18px;
+
+  border-radius: 20px;
+
+  color: #91a39d;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  font-size: 0.88rem;
+}
+
+
+.dot {
+  opacity: 0.45;
+}
+
+
+/* ==================================================
+   DECORATIVE GLOWS
+================================================== */
+
+.glow {
+  position: absolute;
+
+  border-radius: 999px;
+
+  filter: blur(90px);
+
+  pointer-events: none;
+}
+
+
+.glow-one {
+  width: 380px;
+  height: 380px;
+
+  top: -150px;
+  right: -80px;
+
+  background:
+    rgba(127, 194, 164, 0.13);
+}
+
+
+.glow-two {
+  width: 330px;
+  height: 330px;
+
+  bottom: -160px;
+  left: -80px;
+
+  background:
+    rgba(93, 137, 153, 0.11);
+}
+
+
+/* ==================================================
+   LOADING / ERROR
+================================================== */
+
+.loading,
+.error-card {
+  position: relative;
+
+  z-index: 2;
+
+  padding: 32px;
+
+  border-radius: 24px;
+
+  color: #f7fafc;
+
+  background:
+    rgba(255, 255, 255, 0.05);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+}
+
+
+.error-card {
+  max-width: 440px;
+
+  text-align: center;
+}
+
+
+.error-card .frog {
+  font-size: 5rem;
+}
+
+
+.error-card button {
+  border: 0;
+
+  border-radius: 999px;
+
+  padding:
+    12px 18px;
+
+  cursor: pointer;
+
+  background: #cfe8d8;
+
+  color: #132119;
+}
+
+
+/* ==================================================
+   MEDIUM / LAPTOP
+   901px - 1300px
+================================================== */
+
+@media
+(max-width: 1300px)
+and
+(min-width: 901px) {
+
+  .hero-copy {
+    padding:
+      27px
+      clamp(
+        26px,
+        3vw,
+        42px
+      )
+      42px;
+  }
+
+
+  .hero-main {
+    grid-template-columns:
+      minmax(
+        210px,
+        255px
+      )
+      minmax(
+        0,
+        1fr
+      );
+
+    grid-template-rows:
+      36px 1fr;
+
+    column-gap:
+      clamp(
+        20px,
+        3vw,
+        38px
+      );
+
+    row-gap: 3px;
+  }
+
+
+  .hero-badge {
+    min-height: 34px;
+
+    padding:
+      5px 12px;
+
+    gap: 8px;
+
+    font-size: 0.86rem;
+  }
+
+
+  .weather-icon {
+    font-size: 1.1em;
+  }
+
+
+  .temperature {
+    font-size:
+      clamp(
+        6.2rem,
+        9vw,
+        7.6rem
+      );
+
+    line-height: 0.77;
+  }
+
+
+  .hero-temp-caption {
+    margin-top: 8px;
+
+    font-size: 0.62rem;
+
+    letter-spacing: 0.08em;
+  }
+
+
+  .hero-meta {
+    gap: 7px;
+  }
+
+
+  .hero-meta-card {
+    min-height: 64px;
+
+    padding:
+      8px 10px;
+
+    border-radius: 12px;
+  }
+
+
+  .hero-meta-label {
+    margin-bottom: 4px;
+
+    font-size: 0.54rem;
+
+    letter-spacing: 0.075em;
+  }
+
+
+  .hero-meta-value {
+    font-size:
+      clamp(
+        0.86rem,
+        1.45vw,
+        1.08rem
+      );
+  }
+
+
+  .hero-meta-sub {
+    margin-top: 3px;
+
+    font-size: 0.49rem;
+  }
+
+
+  /*
+     Keep Frog scene physically large.
+     Card simply clips the sides.
+  */
+
+  .frog-wide-image {
+    width:
+      max(
+        100%,
+        1250px
+      );
+
+    max-width: none;
+  }
+
+}
+
+
+/* ==================================================
+   NARROW
+   651px - 900px
+
+   Still condition/temp beside 4×2 grid.
+================================================== */
+
+@media
+(max-width: 900px)
+and
+(min-width: 651px) {
+
+  .shell {
+    padding:
+      12px;
+  }
+
+
+  header {
+    margin-bottom: 10px;
+
+    padding:
+      14px 18px;
+  }
+
+
+  .hero-copy {
+    padding:
+      20px
+      18px
+      32px;
+  }
+
+
+  .hero-main {
+    grid-template-columns:
+      minmax(
+        155px,
+        185px
+      )
+      minmax(
+        0,
+        1fr
+      );
+
+    grid-template-rows:
+      31px 1fr;
+
+    column-gap: 14px;
+
+    row-gap: 2px;
+  }
+
+
+  .hero-badge {
+    min-height: 29px;
+
+    padding:
+      4px 9px;
+
+    gap: 6px;
+
+    font-size: 0.73rem;
+  }
+
+
+  .temperature {
+    font-size:
+      clamp(
+        4.8rem,
+        10vw,
+        6rem
+      );
+  }
+
+
+  .hero-temp-caption {
+    margin-top: 6px;
+
+    font-size: 0.5rem;
+  }
+
+
+  .hero-meta {
+    gap: 5px;
+  }
+
+
+  .hero-meta-card {
+    min-height: 52px;
+
+    padding:
+      6px 7px;
+
+    border-radius: 10px;
+  }
+
+
+  .hero-meta-label {
+    margin-bottom: 3px;
+
+    font-size: 0.44rem;
+  }
+
+
+  .hero-meta-value {
+    font-size:
+      clamp(
+        0.68rem,
+        1.7vw,
+        0.88rem
+      );
+  }
+
+
+  .hero-meta-sub {
+    margin-top: 2px;
+
+    font-size: 0.4rem;
+  }
+
+
+  .frog-wide-image {
+    width: 1250px;
+
+    max-width: none;
+  }
+
+
+  footer {
+    margin-top: 10px;
+  }
+
+}
+
+
+/* ==================================================
+   SMALL
+   <= 650px
+
+   Still one horizontal information strip.
+================================================== */
+
+@media
+(max-width: 650px) {
+
+  .shell {
+    padding: 9px;
+  }
+
+
+  header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    padding:
+      10px 12px;
+
+    margin-bottom: 8px;
+
+    border-radius: 18px;
+  }
+
+
+  header h1 {
+    font-size: 1.32rem;
+  }
+
+
+  .kicker,
+  .updated {
+    font-size: 0.55rem;
+  }
+
+
+  .hero-card {
+    border-radius: 22px;
+  }
+
+
+  .hero-copy {
+    padding:
+      14px
+      11px
+      24px;
+  }
+
+
+  .hero-main {
+    grid-template-columns:
+      minmax(
+        112px,
+        132px
+      )
+      minmax(
+        0,
+        1fr
+      );
+
+    grid-template-rows:
+      26px 1fr;
+
+    column-gap: 8px;
+
+    row-gap: 1px;
+  }
+
+
+  .hero-badge {
+    min-height: 24px;
+
+    padding:
+      2px 7px;
+
+    gap: 5px;
+
+    font-size: 0.62rem;
+  }
+
+
+  .temperature {
+    font-size:
+      clamp(
+        3.7rem,
+        12vw,
+        4.6rem
+      );
+
+    line-height: 0.76;
+  }
+
+
+  .hero-temp-caption {
+    margin-top: 4px;
+
+    font-size: 0.4rem;
+  }
+
+
+  .hero-meta {
+    gap: 4px;
+  }
+
+
+  .hero-meta-card {
+    min-height: 42px;
+
+    padding:
+      4px 5px;
+
+    border-radius: 8px;
+  }
+
+
+  .hero-meta-label {
+    margin-bottom: 2px;
+
+    font-size: 0.36rem;
+
+    letter-spacing: 0.035em;
+  }
+
+
+  .hero-meta-value {
+    font-size:
+      clamp(
+        0.55rem,
+        2.1vw,
+        0.72rem
+      );
+  }
+
+
+  .hero-meta-sub {
+    margin-top: 1px;
+
+    font-size: 0.33rem;
+  }
+
+
+  .frog-wide-image {
+    width: 1150px;
+
+    max-width: none;
+  }
+
+
+  footer {
+    margin-top: 8px;
+
+    padding:
+      9px 12px;
+
+    font-size: 0.67rem;
+  }
+
+}
+
+
+/* ==================================================
+   VERY SMALL
+   <= 470px
+
+   Same layout.
+   Only spacing/type compresses.
+================================================== */
+
+@media
+(max-width: 470px) {
+
+  .shell {
+    padding: 7px;
+  }
+
+
+  header {
+    padding:
+      9px 10px;
+
+    margin-bottom: 7px;
+  }
+
+
+  header h1 {
+    font-size: 1.15rem;
+  }
+
+
+  .hero-copy {
+    padding:
+      9px
+      7px
+      17px;
+  }
+
+
+  .hero-main {
+    grid-template-columns:
+      minmax(
+        84px,
+        98px
+      )
+      minmax(
+        0,
+        1fr
+      );
+
+    grid-template-rows:
+      22px 1fr;
+
+    column-gap: 5px;
+
+    row-gap: 0;
+  }
+
+
+  .hero-badge {
+    min-height: 20px;
+
+    padding:
+      1px 5px;
+
+    gap: 4px;
+
+    font-size: 0.51rem;
+
+    border-radius: 8px;
+  }
+
+
+  .temperature {
+    font-size:
+      clamp(
+        3rem,
+        13vw,
+        3.7rem
+      );
+  }
+
+
+  .hero-temp-caption {
+    margin-top: 3px;
+
+    font-size: 0.32rem;
+
+    letter-spacing: 0.025em;
+  }
+
+
+  .hero-meta {
+    grid-template-columns:
+      repeat(
+        4,
+        minmax(
+          0,
+          1fr
+        )
+      );
+
+    gap: 3px;
+  }
+
+
+  .hero-meta-card {
+    min-height: 34px;
+
+    padding:
+      3px;
+
+    border-radius: 6px;
+  }
+
+
+  .hero-meta-label {
+    margin-bottom: 1px;
+
+    font-size: 0.285rem;
+
+    letter-spacing: 0.015em;
+  }
+
+
+  .hero-meta-value {
+    font-size:
+      clamp(
+        0.43rem,
+        2vw,
+        0.57rem
+      );
+  }
+
+
+  .hero-meta-sub {
+    margin-top: 1px;
+
+    font-size: 0.265rem;
+
+    letter-spacing: 0;
+  }
+
+
+  .frog-wide-image {
+    width: 1000px;
+
+    max-width: none;
+  }
+
+
+  footer {
+    margin-top: 7px;
+
+    padding:
+      7px 9px;
+
+    font-size: 0.6rem;
+  }
+
+}

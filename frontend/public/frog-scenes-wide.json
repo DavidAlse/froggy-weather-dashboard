@@ -1,0 +1,1037 @@
+{
+  "source_directory": "frontend\\public\\images\\frogs\\wide",
+  "scene_count": 100,
+  "category_count": 22,
+  "categories": {
+    "01": {
+      "condition": "sunny",
+      "scenes": [
+        {
+          "name": "01-sunny-beach-reading",
+          "category": "01",
+          "condition": "sunny",
+          "scene": "beach-reading",
+          "files": {
+            "base": "/images/frogs/wide/01-sunny-beach-reading.png"
+          }
+        },
+        {
+          "name": "01-sunny-beach-sandcastle",
+          "category": "01",
+          "condition": "sunny",
+          "scene": "beach-sandcastle",
+          "files": {
+            "base": "/images/frogs/wide/01-sunny-beach-sandcastle.png"
+          }
+        },
+        {
+          "name": "01-sunny-beach-sunscreen",
+          "category": "01",
+          "condition": "sunny",
+          "scene": "beach-sunscreen",
+          "files": {
+            "base": "/images/frogs/wide/01-sunny-beach-sunscreen.png"
+          }
+        },
+        {
+          "name": "01-sunny-citypark-sunbathing",
+          "category": "01",
+          "condition": "sunny",
+          "scene": "citypark-sunbathing",
+          "files": {
+            "base": "/images/frogs/wide/01-sunny-citypark-sunbathing.png",
+            "c": "/images/frogs/wide/01-sunny-citypark-sunbathing_c.png",
+            "f": "/images/frogs/wide/01-sunny-citypark-sunbathing_f.png"
+          }
+        },
+        {
+          "name": "01-sunny-creek-swimming",
+          "category": "01",
+          "condition": "sunny",
+          "scene": "creek-swimming",
+          "files": {
+            "base": "/images/frogs/wide/01-sunny-creek-swimming.png"
+          }
+        },
+        {
+          "name": "01-sunny-field-kite",
+          "category": "01",
+          "condition": "sunny",
+          "scene": "field-kite",
+          "files": {
+            "base": "/images/frogs/wide/01-sunny-field-kite.png",
+            "c": "/images/frogs/wide/01-sunny-field-kite_c.png",
+            "f": "/images/frogs/wide/01-sunny-field-kite_f.png"
+          }
+        },
+        {
+          "name": "01-sunny-hills-sunbathing",
+          "category": "01",
+          "condition": "sunny",
+          "scene": "hills-sunbathing",
+          "files": {
+            "base": "/images/frogs/wide/01-sunny-hills-sunbathing.png"
+          }
+        },
+        {
+          "name": "01-sunny-home-laundry",
+          "category": "01",
+          "condition": "sunny",
+          "scene": "home-laundry",
+          "files": {
+            "base": "/images/frogs/wide/01-sunny-home-laundry.png",
+            "c": "/images/frogs/wide/01-sunny-home-laundry_c.png",
+            "f": "/images/frogs/wide/01-sunny-home-laundry_f.png"
+          }
+        },
+        {
+          "name": "01-sunny-orchard-picking",
+          "category": "01",
+          "condition": "sunny",
+          "scene": "orchard-picking",
+          "files": {
+            "base": "/images/frogs/wide/01-sunny-orchard-picking.png"
+          }
+        },
+        {
+          "name": "01-sunny-rooftop-pinacolada",
+          "category": "01",
+          "condition": "sunny",
+          "scene": "rooftop-pinacolada",
+          "files": {
+            "base": "/images/frogs/wide/01-sunny-rooftop-pinacolada.png"
+          }
+        }
+      ]
+    },
+    "02": {
+      "condition": "mostly-sunny",
+      "scenes": [
+        {
+          "name": "02-mostly-sunny-beach-reading",
+          "category": "02",
+          "condition": "mostly-sunny",
+          "scene": "beach-reading",
+          "files": {
+            "base": "/images/frogs/wide/02-mostly-sunny-beach-reading.png"
+          }
+        },
+        {
+          "name": "02-mostly-sunny-beach-sandcastle",
+          "category": "02",
+          "condition": "mostly-sunny",
+          "scene": "beach-sandcastle",
+          "files": {
+            "base": "/images/frogs/wide/02-mostly-sunny-beach-sandcastle.png"
+          }
+        },
+        {
+          "name": "02-mostly-sunny-beach-sunscreen",
+          "category": "02",
+          "condition": "mostly-sunny",
+          "scene": "beach-sunscreen",
+          "files": {
+            "base": "/images/frogs/wide/02-mostly-sunny-beach-sunscreen.png"
+          }
+        },
+        {
+          "name": "02-mostly-sunny-citypark-picnic",
+          "category": "02",
+          "condition": "mostly-sunny",
+          "scene": "citypark-picnic",
+          "files": {
+            "base": "/images/frogs/wide/02-mostly-sunny-citypark-picnic.png"
+          }
+        },
+        {
+          "name": "02-mostly-sunny-creek-swimming",
+          "category": "02",
+          "condition": "mostly-sunny",
+          "scene": "creek-swimming",
+          "files": {
+            "base": "/images/frogs/wide/02-mostly-sunny-creek-swimming.png"
+          }
+        },
+        {
+          "name": "02-mostly-sunny-field-kite",
+          "category": "02",
+          "condition": "mostly-sunny",
+          "scene": "field-kite",
+          "files": {
+            "base": "/images/frogs/wide/02-mostly-sunny-field-kite.png"
+          }
+        },
+        {
+          "name": "02-mostly-sunny-hills-sunbathing",
+          "category": "02",
+          "condition": "mostly-sunny",
+          "scene": "hills-sunbathing",
+          "files": {
+            "base": "/images/frogs/wide/02-mostly-sunny-hills-sunbathing.png"
+          }
+        },
+        {
+          "name": "02-mostly-sunny-home-laundry",
+          "category": "02",
+          "condition": "mostly-sunny",
+          "scene": "home-laundry",
+          "files": {
+            "base": "/images/frogs/wide/02-mostly-sunny-home-laundry.png"
+          }
+        },
+        {
+          "name": "02-mostly-sunny-orchard-picking",
+          "category": "02",
+          "condition": "mostly-sunny",
+          "scene": "orchard-picking",
+          "files": {
+            "base": "/images/frogs/wide/02-mostly-sunny-orchard-picking.png"
+          }
+        },
+        {
+          "name": "02-mostly-sunny-rooftop-pinacolada",
+          "category": "02",
+          "condition": "mostly-sunny",
+          "scene": "rooftop-pinacolada",
+          "files": {
+            "base": "/images/frogs/wide/02-mostly-sunny-rooftop-pinacolada.png"
+          }
+        }
+      ]
+    },
+    "03": {
+      "condition": "partly-cloudy-day",
+      "scenes": [
+        {
+          "name": "03-partly-cloudy-day-beach-shells",
+          "category": "03",
+          "condition": "partly-cloudy-day",
+          "scene": "beach-shells",
+          "files": {
+            "base": "/images/frogs/wide/03-partly-cloudy-day-beach-shells.png"
+          }
+        },
+        {
+          "name": "03-partly-cloudy-day-citypark-ukelele",
+          "category": "03",
+          "condition": "partly-cloudy-day",
+          "scene": "citypark-ukelele",
+          "files": {
+            "base": "/images/frogs/wide/03-partly-cloudy-day-citypark-ukelele.png",
+            "c": "/images/frogs/wide/03-partly-cloudy-day-citypark-ukelele_c.png",
+            "f": "/images/frogs/wide/03-partly-cloudy-day-citypark-ukelele_f.png"
+          }
+        },
+        {
+          "name": "03-partly-cloudy-day-creek-feet",
+          "category": "03",
+          "condition": "partly-cloudy-day",
+          "scene": "creek-feet",
+          "files": {
+            "base": "/images/frogs/wide/03-partly-cloudy-day-creek-feet.png"
+          }
+        },
+        {
+          "name": "03-partly-cloudy-day-field-biking",
+          "category": "03",
+          "condition": "partly-cloudy-day",
+          "scene": "field-biking",
+          "files": {
+            "base": "/images/frogs/wide/03-partly-cloudy-day-field-biking.png",
+            "c": "/images/frogs/wide/03-partly-cloudy-day-field-biking_c.png",
+            "f": "/images/frogs/wide/03-partly-cloudy-day-field-biking_f.png"
+          }
+        },
+        {
+          "name": "03-partly-cloudy-day-field-hiking",
+          "category": "03",
+          "condition": "partly-cloudy-day",
+          "scene": "field-hiking",
+          "files": {
+            "base": "/images/frogs/wide/03-partly-cloudy-day-field-hiking.png",
+            "c": "/images/frogs/wide/03-partly-cloudy-day-field-hiking_c.png",
+            "f": "/images/frogs/wide/03-partly-cloudy-day-field-hiking_f.png"
+          }
+        },
+        {
+          "name": "03-partly-cloudy-day-hills-painting",
+          "category": "03",
+          "condition": "partly-cloudy-day",
+          "scene": "hills-painting",
+          "files": {
+            "base": "/images/frogs/wide/03-partly-cloudy-day-hills-painting.png"
+          }
+        },
+        {
+          "name": "03-partly-cloudy-day-hills-reading",
+          "category": "03",
+          "condition": "partly-cloudy-day",
+          "scene": "hills-reading",
+          "files": {
+            "base": "/images/frogs/wide/03-partly-cloudy-day-hills-reading.png"
+          }
+        },
+        {
+          "name": "03-partly-cloudy-day-home-flowers",
+          "category": "03",
+          "condition": "partly-cloudy-day",
+          "scene": "home-flowers",
+          "files": {
+            "base": "/images/frogs/wide/03-partly-cloudy-day-home-flowers.png"
+          }
+        },
+        {
+          "name": "03-partly-cloudy-day-orchard-butterflies",
+          "category": "03",
+          "condition": "partly-cloudy-day",
+          "scene": "orchard-butterflies",
+          "files": {
+            "base": "/images/frogs/wide/03-partly-cloudy-day-orchard-butterflies.png",
+            "c": "/images/frogs/wide/03-partly-cloudy-day-orchard-butterflies_c.png",
+            "f": "/images/frogs/wide/03-partly-cloudy-day-orchard-butterflies_f.png"
+          }
+        },
+        {
+          "name": "03-partly-cloudy-day-orchard-treeswing",
+          "category": "03",
+          "condition": "partly-cloudy-day",
+          "scene": "orchard-treeswing",
+          "files": {
+            "base": "/images/frogs/wide/03-partly-cloudy-day-orchard-treeswing.png"
+          }
+        }
+      ]
+    },
+    "04": {
+      "condition": "mostly-cloudy-day",
+      "scenes": [
+        {
+          "name": "04-mostly-cloudy-day-beach-shells",
+          "category": "04",
+          "condition": "mostly-cloudy-day",
+          "scene": "beach-shells",
+          "files": {
+            "base": "/images/frogs/wide/04-mostly-cloudy-day-beach-shells.png"
+          }
+        },
+        {
+          "name": "04-mostly-cloudy-day-citypark-ukelele",
+          "category": "04",
+          "condition": "mostly-cloudy-day",
+          "scene": "citypark-ukelele",
+          "files": {
+            "base": "/images/frogs/wide/04-mostly-cloudy-day-citypark-ukelele.png"
+          }
+        },
+        {
+          "name": "04-mostly-cloudy-day-creek-feet",
+          "category": "04",
+          "condition": "mostly-cloudy-day",
+          "scene": "creek-feet",
+          "files": {
+            "base": "/images/frogs/wide/04-mostly-cloudy-day-creek-feet.png"
+          }
+        },
+        {
+          "name": "04-mostly-cloudy-day-field-biking",
+          "category": "04",
+          "condition": "mostly-cloudy-day",
+          "scene": "field-biking",
+          "files": {
+            "base": "/images/frogs/wide/04-mostly-cloudy-day-field-biking.png"
+          }
+        },
+        {
+          "name": "04-mostly-cloudy-day-field-hiking",
+          "category": "04",
+          "condition": "mostly-cloudy-day",
+          "scene": "field-hiking",
+          "files": {
+            "base": "/images/frogs/wide/04-mostly-cloudy-day-field-hiking.png"
+          }
+        },
+        {
+          "name": "04-mostly-cloudy-day-hills-painting",
+          "category": "04",
+          "condition": "mostly-cloudy-day",
+          "scene": "hills-painting",
+          "files": {
+            "base": "/images/frogs/wide/04-mostly-cloudy-day-hills-painting.png",
+            "c": "/images/frogs/wide/04-mostly-cloudy-day-hills-painting_c.png",
+            "f": "/images/frogs/wide/04-mostly-cloudy-day-hills-painting_f.png"
+          }
+        },
+        {
+          "name": "04-mostly-cloudy-day-hills-reading",
+          "category": "04",
+          "condition": "mostly-cloudy-day",
+          "scene": "hills-reading",
+          "files": {
+            "base": "/images/frogs/wide/04-mostly-cloudy-day-hills-reading.png"
+          }
+        },
+        {
+          "name": "04-mostly-cloudy-day-home-flowers",
+          "category": "04",
+          "condition": "mostly-cloudy-day",
+          "scene": "home-flowers",
+          "files": {
+            "base": "/images/frogs/wide/04-mostly-cloudy-day-home-flowers.png",
+            "c": "/images/frogs/wide/04-mostly-cloudy-day-home-flowers_c.png",
+            "f": "/images/frogs/wide/04-mostly-cloudy-day-home-flowers_f.png"
+          }
+        },
+        {
+          "name": "04-mostly-cloudy-day-orchard-butterflies",
+          "category": "04",
+          "condition": "mostly-cloudy-day",
+          "scene": "orchard-butterflies",
+          "files": {
+            "base": "/images/frogs/wide/04-mostly-cloudy-day-orchard-butterflies.png"
+          }
+        },
+        {
+          "name": "04-mostly-cloudy-day-orchard-treeswing",
+          "category": "04",
+          "condition": "mostly-cloudy-day",
+          "scene": "orchard-treeswing",
+          "files": {
+            "base": "/images/frogs/wide/04-mostly-cloudy-day-orchard-treeswing.png",
+            "c": "/images/frogs/wide/04-mostly-cloudy-day-orchard-treeswing_c.png",
+            "f": "/images/frogs/wide/04-mostly-cloudy-day-orchard-treeswing_f.png"
+          }
+        }
+      ]
+    },
+    "05": {
+      "condition": "clear",
+      "scenes": [
+        {
+          "name": "05-clear-creek-stars",
+          "category": "05",
+          "condition": "clear",
+          "scene": "creek-stars",
+          "files": {
+            "base": "/images/frogs/wide/05-clear-creek-stars.png"
+          }
+        },
+        {
+          "name": "05-clear-field-lanterns",
+          "category": "05",
+          "condition": "clear",
+          "scene": "field-lanterns",
+          "files": {
+            "base": "/images/frogs/wide/05-clear-field-lanterns.png"
+          }
+        },
+        {
+          "name": "05-clear-hills-camping",
+          "category": "05",
+          "condition": "clear",
+          "scene": "hills-camping",
+          "files": {
+            "base": "/images/frogs/wide/05-clear-hills-camping.png"
+          }
+        },
+        {
+          "name": "05-clear-hills-telescope",
+          "category": "05",
+          "condition": "clear",
+          "scene": "hills-telescope",
+          "files": {
+            "base": "/images/frogs/wide/05-clear-hills-telescope.png"
+          }
+        },
+        {
+          "name": "05-clear-home-lounging",
+          "category": "05",
+          "condition": "clear",
+          "scene": "home-lounging",
+          "files": {
+            "base": "/images/frogs/wide/05-clear-home-lounging.png"
+          }
+        },
+        {
+          "name": "05-clear-orchard-fireflies",
+          "category": "05",
+          "condition": "clear",
+          "scene": "orchard-fireflies",
+          "files": {
+            "base": "/images/frogs/wide/05-clear-orchard-fireflies.png"
+          }
+        }
+      ]
+    },
+    "06": {
+      "condition": "mostly-clear",
+      "scenes": [
+        {
+          "name": "06-mostly-clear-creek-stars",
+          "category": "06",
+          "condition": "mostly-clear",
+          "scene": "creek-stars",
+          "files": {
+            "base": "/images/frogs/wide/06-mostly-clear-creek-stars.png"
+          }
+        },
+        {
+          "name": "06-mostly-clear-field-lanterns",
+          "category": "06",
+          "condition": "mostly-clear",
+          "scene": "field-lanterns",
+          "files": {
+            "base": "/images/frogs/wide/06-mostly-clear-field-lanterns.png"
+          }
+        },
+        {
+          "name": "06-mostly-clear-hills-camping",
+          "category": "06",
+          "condition": "mostly-clear",
+          "scene": "hills-camping",
+          "files": {
+            "base": "/images/frogs/wide/06-mostly-clear-hills-camping.png"
+          }
+        },
+        {
+          "name": "06-mostly-clear-hills-telescope",
+          "category": "06",
+          "condition": "mostly-clear",
+          "scene": "hills-telescope",
+          "files": {
+            "base": "/images/frogs/wide/06-mostly-clear-hills-telescope.png"
+          }
+        },
+        {
+          "name": "06-mostly-clear-home-lounging",
+          "category": "06",
+          "condition": "mostly-clear",
+          "scene": "home-lounging",
+          "files": {
+            "base": "/images/frogs/wide/06-mostly-clear-home-lounging.png"
+          }
+        },
+        {
+          "name": "06-mostly-clear-orchard-fireflies",
+          "category": "06",
+          "condition": "mostly-clear",
+          "scene": "orchard-fireflies",
+          "files": {
+            "base": "/images/frogs/wide/06-mostly-clear-orchard-fireflies.png"
+          }
+        }
+      ]
+    },
+    "07": {
+      "condition": "partly-cloudy-night",
+      "scenes": [
+        {
+          "name": "07-partly-cloudy-night-creek-fireflies",
+          "category": "07",
+          "condition": "partly-cloudy-night",
+          "scene": "creek-fireflies",
+          "files": {
+            "base": "/images/frogs/wide/07-partly-cloudy-night-creek-fireflies.png"
+          }
+        },
+        {
+          "name": "07-partly-cloudy-night-field-fireflies",
+          "category": "07",
+          "condition": "partly-cloudy-night",
+          "scene": "field-fireflies",
+          "files": {
+            "base": "/images/frogs/wide/07-partly-cloudy-night-field-fireflies.png"
+          }
+        },
+        {
+          "name": "07-partly-cloudy-night-hills-smores",
+          "category": "07",
+          "condition": "partly-cloudy-night",
+          "scene": "hills-smores",
+          "files": {
+            "base": "/images/frogs/wide/07-partly-cloudy-night-hills-smores.png"
+          }
+        },
+        {
+          "name": "07-partly-cloudy-night-home-inside",
+          "category": "07",
+          "condition": "partly-cloudy-night",
+          "scene": "home-inside",
+          "files": {
+            "base": "/images/frogs/wide/07-partly-cloudy-night-home-inside.png"
+          }
+        },
+        {
+          "name": "07-partly-cloudy-night-orchard-eating",
+          "category": "07",
+          "condition": "partly-cloudy-night",
+          "scene": "orchard-eating",
+          "files": {
+            "base": "/images/frogs/wide/07-partly-cloudy-night-orchard-eating.png"
+          }
+        }
+      ]
+    },
+    "08": {
+      "condition": "mostly-cloudy-night",
+      "scenes": [
+        {
+          "name": "08-mostly-cloudy-night-creek-fireflies",
+          "category": "08",
+          "condition": "mostly-cloudy-night",
+          "scene": "creek-fireflies",
+          "files": {
+            "base": "/images/frogs/wide/08-mostly-cloudy-night-creek-fireflies.png"
+          }
+        },
+        {
+          "name": "08-mostly-cloudy-night-field-fireflies",
+          "category": "08",
+          "condition": "mostly-cloudy-night",
+          "scene": "field-fireflies",
+          "files": {
+            "base": "/images/frogs/wide/08-mostly-cloudy-night-field-fireflies.png"
+          }
+        },
+        {
+          "name": "08-mostly-cloudy-night-hills-smores",
+          "category": "08",
+          "condition": "mostly-cloudy-night",
+          "scene": "hills-smores",
+          "files": {
+            "base": "/images/frogs/wide/08-mostly-cloudy-night-hills-smores.png"
+          }
+        },
+        {
+          "name": "08-mostly-cloudy-night-home-inside",
+          "category": "08",
+          "condition": "mostly-cloudy-night",
+          "scene": "home-inside",
+          "files": {
+            "base": "/images/frogs/wide/08-mostly-cloudy-night-home-inside.png"
+          }
+        },
+        {
+          "name": "08-mostly-cloudy-night-orchard-eating",
+          "category": "08",
+          "condition": "mostly-cloudy-night",
+          "scene": "orchard-eating",
+          "files": {
+            "base": "/images/frogs/wide/08-mostly-cloudy-night-orchard-eating.png"
+          }
+        }
+      ]
+    },
+    "09": {
+      "condition": "cloudy",
+      "scenes": [
+        {
+          "name": "09-cloudy-hills-coffee",
+          "category": "09",
+          "condition": "cloudy",
+          "scene": "hills-coffee",
+          "files": {
+            "base": "/images/frogs/wide/09-cloudy-hills-coffee.png"
+          }
+        },
+        {
+          "name": "09-cloudy-home-flowers",
+          "category": "09",
+          "condition": "cloudy",
+          "scene": "home-flowers",
+          "files": {
+            "base": "/images/frogs/wide/09-cloudy-home-flowers.png"
+          }
+        },
+        {
+          "name": "09-cloudy-orchard-watching",
+          "category": "09",
+          "condition": "cloudy",
+          "scene": "orchard-watching",
+          "files": {
+            "base": "/images/frogs/wide/09-cloudy-orchard-watching.png"
+          }
+        }
+      ]
+    },
+    "10": {
+      "condition": "drizzle",
+      "scenes": [
+        {
+          "name": "10-drizzle-creek-leaf",
+          "category": "10",
+          "condition": "drizzle",
+          "scene": "creek-leaf",
+          "files": {
+            "base": "/images/frogs/wide/10-drizzle-creek-leaf.png"
+          }
+        },
+        {
+          "name": "10-drizzle-field-leaf",
+          "category": "10",
+          "condition": "drizzle",
+          "scene": "field-leaf",
+          "files": {
+            "base": "/images/frogs/wide/10-drizzle-field-leaf.png"
+          }
+        },
+        {
+          "name": "10-drizzle-hills-umbrella",
+          "category": "10",
+          "condition": "drizzle",
+          "scene": "hills-umbrella",
+          "files": {
+            "base": "/images/frogs/wide/10-drizzle-hills-umbrella.png"
+          }
+        },
+        {
+          "name": "10-drizzle-home-laundry",
+          "category": "10",
+          "condition": "drizzle",
+          "scene": "home-laundry",
+          "files": {
+            "base": "/images/frogs/wide/10-drizzle-home-laundry.png"
+          }
+        },
+        {
+          "name": "10-drizzle-orchard-reading",
+          "category": "10",
+          "condition": "drizzle",
+          "scene": "orchard-reading",
+          "files": {
+            "base": "/images/frogs/wide/10-drizzle-orchard-reading.png"
+          }
+        }
+      ]
+    },
+    "11": {
+      "condition": "rain",
+      "scenes": [
+        {
+          "name": "11-rain-creek-leaf",
+          "category": "11",
+          "condition": "rain",
+          "scene": "creek-leaf",
+          "files": {
+            "base": "/images/frogs/wide/11-rain-creek-leaf.png"
+          }
+        },
+        {
+          "name": "11-rain-hills-umbrella",
+          "category": "11",
+          "condition": "rain",
+          "scene": "hills-umbrella",
+          "files": {
+            "base": "/images/frogs/wide/11-rain-hills-umbrella.png"
+          }
+        },
+        {
+          "name": "11-rain-home-inside",
+          "category": "11",
+          "condition": "rain",
+          "scene": "home-inside",
+          "files": {
+            "base": "/images/frogs/wide/11-rain-home-inside.png"
+          }
+        },
+        {
+          "name": "11-rain-home-laundry",
+          "category": "11",
+          "condition": "rain",
+          "scene": "home-laundry",
+          "files": {
+            "base": "/images/frogs/wide/11-rain-home-laundry.png"
+          }
+        }
+      ]
+    },
+    "12": {
+      "condition": "heavy-rain",
+      "scenes": [
+        {
+          "name": "12-heavy-rain-busstop-umbrella",
+          "category": "12",
+          "condition": "heavy-rain",
+          "scene": "busstop-umbrella",
+          "files": {
+            "base": "/images/frogs/wide/12-heavy-rain-busstop-umbrella.png"
+          }
+        },
+        {
+          "name": "12-heavy-rain-creek-leaf",
+          "category": "12",
+          "condition": "heavy-rain",
+          "scene": "creek-leaf",
+          "files": {
+            "base": "/images/frogs/wide/12-heavy-rain-creek-leaf.png"
+          }
+        }
+      ]
+    },
+    "13": {
+      "condition": "flurries",
+      "scenes": [
+        {
+          "name": "13-flurries-citypark-snowman",
+          "category": "13",
+          "condition": "flurries",
+          "scene": "citypark-snowman",
+          "files": {
+            "base": "/images/frogs/wide/13-flurries-citypark-snowman.png"
+          }
+        },
+        {
+          "name": "13-flurries-creek-iceskating",
+          "category": "13",
+          "condition": "flurries",
+          "scene": "creek-iceskating",
+          "files": {
+            "base": "/images/frogs/wide/13-flurries-creek-iceskating.png"
+          }
+        }
+      ]
+    },
+    "15": {
+      "condition": "snow-showers-snow",
+      "scenes": [
+        {
+          "name": "15-snow-showers-snow-citypark-snowman",
+          "category": "15",
+          "condition": "snow-showers-snow",
+          "scene": "citypark-snowman",
+          "files": {
+            "base": "/images/frogs/wide/15-snow-showers-snow-citypark-snowman.png"
+          }
+        },
+        {
+          "name": "15-snow-showers-snow-creek-iceskating",
+          "category": "15",
+          "condition": "snow-showers-snow",
+          "scene": "creek-iceskating",
+          "files": {
+            "base": "/images/frogs/wide/15-snow-showers-snow-creek-iceskating.png"
+          }
+        },
+        {
+          "name": "15-snow-showers-snow-home-shoveling",
+          "category": "15",
+          "condition": "snow-showers-snow",
+          "scene": "home-shoveling",
+          "files": {
+            "base": "/images/frogs/wide/15-snow-showers-snow-home-shoveling.png"
+          }
+        }
+      ]
+    },
+    "16": {
+      "condition": "blowing-snow",
+      "scenes": [
+        {
+          "name": "16-blowing-snow-field-snowman",
+          "category": "16",
+          "condition": "blowing-snow",
+          "scene": "field-snowman",
+          "files": {
+            "base": "/images/frogs/wide/16-blowing-snow-field-snowman.png"
+          }
+        }
+      ]
+    },
+    "17": {
+      "condition": "heavy-snow-blizzard",
+      "scenes": [
+        {
+          "name": "17-heavy-snow-blizzard-home-inside",
+          "category": "17",
+          "condition": "heavy-snow-blizzard",
+          "scene": "home-inside",
+          "files": {
+            "base": "/images/frogs/wide/17-heavy-snow-blizzard-home-inside.png"
+          }
+        },
+        {
+          "name": "17-heavy-snow-blizzard-home-shoveling",
+          "category": "17",
+          "condition": "heavy-snow-blizzard",
+          "scene": "home-shoveling",
+          "files": {
+            "base": "/images/frogs/wide/17-heavy-snow-blizzard-home-shoveling.png"
+          }
+        }
+      ]
+    },
+    "19": {
+      "condition": "mixed-rain-hail-rain-sleet",
+      "scenes": [
+        {
+          "name": "19-mixed-rain-hail-rain-sleet-busstop-waiting",
+          "category": "19",
+          "condition": "mixed-rain-hail-rain-sleet",
+          "scene": "busstop-waiting",
+          "files": {
+            "base": "/images/frogs/wide/19-mixed-rain-hail-rain-sleet-busstop-waiting.png"
+          }
+        },
+        {
+          "name": "19-mixed-rain-hail-rain-sleet-cafe-entering",
+          "category": "19",
+          "condition": "mixed-rain-hail-rain-sleet",
+          "scene": "cafe-entering",
+          "files": {
+            "base": "/images/frogs/wide/19-mixed-rain-hail-rain-sleet-cafe-entering.png"
+          }
+        }
+      ]
+    },
+    "20": {
+      "condition": "rain-snow-wintry-mix",
+      "scenes": [
+        {
+          "name": "20-rain-snow-wintry-mix-citypark-snowman",
+          "category": "20",
+          "condition": "rain-snow-wintry-mix",
+          "scene": "citypark-snowman",
+          "files": {
+            "base": "/images/frogs/wide/20-rain-snow-wintry-mix-citypark-snowman.png"
+          }
+        }
+      ]
+    },
+    "22": {
+      "condition": "iso-thunderstorms",
+      "scenes": [
+        {
+          "name": "22-iso-thunderstorm-cafe-looking-outside",
+          "category": "22",
+          "condition": "iso-thunderstorms",
+          "scene": null,
+          "files": {
+            "base": "/images/frogs/wide/22-iso-thunderstorm-cafe-looking-outside.png"
+          }
+        },
+        {
+          "name": "22-iso-thunderstorms-home-inside",
+          "category": "22",
+          "condition": "iso-thunderstorms",
+          "scene": "home-inside",
+          "files": {
+            "base": "/images/frogs/wide/22-iso-thunderstorms-home-inside.png"
+          }
+        }
+      ]
+    },
+    "24": {
+      "condition": "strong-thunderstorms",
+      "scenes": [
+        {
+          "name": "24-strong-thunderstorms-home-inside",
+          "category": "24",
+          "condition": "strong-thunderstorms",
+          "scene": "home-inside",
+          "files": {
+            "base": "/images/frogs/wide/24-strong-thunderstorms-home-inside.png"
+          }
+        }
+      ]
+    },
+    "25": {
+      "condition": "breezy-windy",
+      "scenes": [
+        {
+          "name": "25-breezy-windy-creek-pinwheel",
+          "category": "25",
+          "condition": "breezy-windy",
+          "scene": "creek-pinwheel",
+          "files": {
+            "base": "/images/frogs/wide/25-breezy-windy-creek-pinwheel.png"
+          }
+        },
+        {
+          "name": "25-breezy-windy-home-laundry",
+          "category": "25",
+          "condition": "breezy-windy",
+          "scene": "home-laundry",
+          "files": {
+            "base": "/images/frogs/wide/25-breezy-windy-home-laundry.png"
+          }
+        }
+      ]
+    },
+    "26": {
+      "condition": "haze-fog-dust-smoke",
+      "scenes": [
+        {
+          "name": "26-haze-fog-dust-smoke-bridge",
+          "category": "26",
+          "condition": "haze-fog-dust-smoke",
+          "scene": "bridge",
+          "files": {
+            "base": "/images/frogs/wide/26-haze-fog-dust-smoke-bridge.png"
+          }
+        },
+        {
+          "name": "26-haze-fog-dust-smoke-busstop-waiting",
+          "category": "26",
+          "condition": "haze-fog-dust-smoke",
+          "scene": "busstop-waiting",
+          "files": {
+            "base": "/images/frogs/wide/26-haze-fog-dust-smoke-busstop-waiting.png"
+          }
+        },
+        {
+          "name": "26-haze-fog-dust-smoke-field-lantern",
+          "category": "26",
+          "condition": "haze-fog-dust-smoke",
+          "scene": "field-lantern",
+          "files": {
+            "base": "/images/frogs/wide/26-haze-fog-dust-smoke-field-lantern.png"
+          }
+        },
+        {
+          "name": "26-haze-fog-dust-smoke-fruit-stand",
+          "category": "26",
+          "condition": "haze-fog-dust-smoke",
+          "scene": "fruit-stand",
+          "files": {
+            "base": "/images/frogs/wide/26-haze-fog-dust-smoke-fruit-stand.png"
+          }
+        },
+        {
+          "name": "26-haze-fog-dust-smoke-hills-cocoa",
+          "category": "26",
+          "condition": "haze-fog-dust-smoke",
+          "scene": "hills-cocoa",
+          "files": {
+            "base": "/images/frogs/wide/26-haze-fog-dust-smoke-hills-cocoa.png"
+          }
+        },
+        {
+          "name": "26-haze-fog-dust-smoke-mountain",
+          "category": "26",
+          "condition": "haze-fog-dust-smoke",
+          "scene": "mountain",
+          "files": {
+            "base": "/images/frogs/wide/26-haze-fog-dust-smoke-mountain.png"
+          }
+        },
+        {
+          "name": "26-haze-fog-dust-smoke-pier",
+          "category": "26",
+          "condition": "haze-fog-dust-smoke",
+          "scene": "pier",
+          "files": {
+            "base": "/images/frogs/wide/26-haze-fog-dust-smoke-pier.png"
+          }
+        },
+        {
+          "name": "26-haze-fog-dust-smoke-rooftop",
+          "category": "26",
+          "condition": "haze-fog-dust-smoke",
+          "scene": "rooftop",
+          "files": {
+            "base": "/images/frogs/wide/26-haze-fog-dust-smoke-rooftop.png"
+          }
+        }
+      ]
+    }
+  }
+}
