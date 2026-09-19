@@ -1,625 +1,308 @@
 import { useEffect, useState } from "react";
 
-
 /* ==================================================
-   FROG FORMAT
-
-   Default = WIDE at every screen size.
-
-   The browser width does NOT switch the artwork
-   to square anymore. Responsive cropping is handled
-   entirely by CSS.
-
-   Optional frontend/.env:
-
-     VITE_FROG_FORMAT=wide
-     VITE_FROG_FORMAT=square
-
-   Missing / "auto" / anything else = wide.
+   CONFIG
 ================================================== */
 
-function useFrogFormat() {
-  const configured =
-    (
-      import.meta.env.VITE_FROG_FORMAT ??
-      "wide"
-    ).toLowerCase();
-
-  return configured === "square"
+const FROG_FORMAT =
+  (import.meta.env.VITE_FROG_FORMAT ?? "wide").toLowerCase() === "square"
     ? "square"
     : "wide";
-}
 
+const PRECIP_THRESHOLD = 20;
 
 /* ==================================================
    WEATHER LABELS
 ================================================== */
 
 const WEATHER = {
-  0: ["Clear sky", "☀️"],
-  1: ["Mainly clear", "🌤️"],
+  0: ["Clear", "☀️"],
+  1: ["Mostly clear", "🌤️"],
   2: ["Partly cloudy", "⛅"],
   3: ["Overcast", "☁️"],
 
   45: ["Fog", "🌫️"],
-  48: ["Rime fog", "🌫️"],
+  48: ["Fog", "🌫️"],
 
-  51: ["Light drizzle", "🌦️"],
+  51: ["Drizzle", "🌦️"],
   53: ["Drizzle", "🌦️"],
-  55: ["Heavy drizzle", "🌧️"],
+  55: ["Drizzle", "🌧️"],
 
-  56: ["Light freezing drizzle", "🌧️"],
+  56: ["Freezing drizzle", "🌧️"],
   57: ["Freezing drizzle", "🌧️"],
 
-  61: ["Light rain", "🌦️"],
+  61: ["Rain", "🌦️"],
   63: ["Rain", "🌧️"],
   65: ["Heavy rain", "🌧️"],
 
-  66: ["Light freezing rain", "🌧️"],
+  66: ["Freezing rain", "🌧️"],
   67: ["Freezing rain", "🌧️"],
 
   71: ["Light snow", "🌨️"],
   73: ["Snow", "❄️"],
   75: ["Heavy snow", "❄️"],
-  77: ["Snow grains", "🌨️"],
+  77: ["Snow", "❄️"],
 
-  80: ["Light rain showers", "🌦️"],
+  80: ["Rain showers", "🌦️"],
   81: ["Rain showers", "🌧️"],
-  82: ["Heavy rain showers", "🌧️"],
+  82: ["Heavy showers", "🌧️"],
 
   85: ["Snow showers", "🌨️"],
   86: ["Heavy snow showers", "❄️"],
 
   95: ["Thunderstorm", "⛈️"],
-  96: ["Thunderstorm with hail", "⛈️"],
-  99: ["Strong thunderstorm with hail", "⛈️"],
+  96: ["Thunderstorm", "⛈️"],
+  99: ["Thunderstorm", "⛈️"],
 };
-
 
 /* ==================================================
-   SQUARE FROG SCENES
-
-   Kept as a manual fallback.
+   SQUARE FROG BACKUP
 ================================================== */
 
+const scenes = (value) =>
+  value.trim().split(/\s+/);
+
 const SQUARE_SCENES = {
-  "01": [
-    "01-sunny-beach-reading",
-    "01-sunny-beach-sandcastle",
-    "01-sunny-beach-sunscreen",
-    "01-sunny-citypark-picnic",
-    "01-sunny-creek-swimming",
-    "01-sunny-field-biking",
-    "01-sunny-field-hiking",
-    "01-sunny-field-kite",
-    "01-sunny-hills-painting",
-    "01-sunny-hills-reading",
-    "01-sunny-hills-sunbathing",
-    "01-sunny-orchard-pickingfruit",
-    "01-sunny-rooftop-pinacolada",
-  ],
+  "01": scenes(`
+    01-sunny-beach-reading
+    01-sunny-beach-sandcastle
+    01-sunny-beach-sunscreen
+    01-sunny-citypark-picnic
+    01-sunny-creek-swimming
+    01-sunny-field-biking
+    01-sunny-field-hiking
+    01-sunny-field-kite
+    01-sunny-hills-painting
+    01-sunny-hills-reading
+    01-sunny-hills-sunbathing
+    01-sunny-home-laundry
+    01-sunny-orchard-pickingfruit
+    01-sunny-rooftop-pinacolada
+  `),
 
-  "02": [
-    "02-mostly-sunny-beach-reading",
-    "02-mostly-sunny-beach-sandcastle",
-    "02-mostly-sunny-beach-sunscreen",
-    "02-mostly-sunny-citypark-picnic",
-    "02-mostly-sunny-creek-swimming",
-    "02-mostly-sunny-field-biking",
-    "02-mostly-sunny-field-hiking",
-    "02-mostly-sunny-field-kite",
-    "02-mostly-sunny-hills-painting",
-    "02-mostly-sunny-hills-reading",
-    "02-mostly-sunny-hills-sunbathing",
-    "02-mostly-sunny-orchard-pickingfruit",
-    "02-mostly-sunny-rooftop-pinacolada",
-  ],
+  "02": scenes(`
+    02-mostly-sunny-beach-reading
+    02-mostly-sunny-beach-sandcastle
+    02-mostly-sunny-beach-sunscreen
+    02-mostly-sunny-citypark-picnic
+    02-mostly-sunny-creek-swimming
+    02-mostly-sunny-field-biking
+    02-mostly-sunny-field-hiking
+    02-mostly-sunny-field-kite
+    02-mostly-sunny-hills-painting
+    02-mostly-sunny-hills-reading
+    02-mostly-sunny-hills-sunbathing
+    02-mostly-sunny-home-laundry
+    02-mostly-sunny-orchard-pickingfruit
+    02-mostly-sunny-rooftop-pinacolada
+  `),
 
-  "03": [
-    "03-partly-cloudy-day-beach-shells",
-    "03-partly-cloudy-day-citypark-ukelele",
-    "03-partly-cloudy-day-creek-feet",
-    "03-partly-cloudy-day-field-biking",
-    "03-partly-cloudy-day-field-hiking",
-    "03-partly-cloudy-day-hills-painting",
-    "03-partly-cloudy-day-hills-reading",
-    "03-partly-cloudy-day-orchard-butterflies",
-    "03-partly-cloudy-day-orchard-treeswing",
-  ],
+  "03": scenes(`
+    03-partly-cloudy-day-beach-shells
+    03-partly-cloudy-day-citypark-ukelele
+    03-partly-cloudy-day-creek-feet
+    03-partly-cloudy-day-field-biking
+    03-partly-cloudy-day-field-hiking
+    03-partly-cloudy-day-hills-painting
+    03-partly-cloudy-day-hills-reading
+    03-partly-cloudy-day-home-flowers
+    03-partly-cloudy-day-orchard-butterflies
+    03-partly-cloudy-day-orchard-treeswing
+  `),
 
-  "04": [
-    "04-mostly-cloudy-day-beach-shells",
-    "04-mostly-cloudy-day-citypark-ukelele",
-    "04-mostly-cloudy-day-creek-feet",
-    "04-mostly-cloudy-day-field-biking",
-    "04-mostly-cloudy-day-field-hiking",
-    "04-mostly-cloudy-day-hills-painting",
-    "04-mostly-cloudy-day-hills-reading",
-    "04-mostly-cloudy-day-orchard-butterflies",
-    "04-mostly-cloudy-day-orchard-treeswing",
-  ],
+  "04": scenes(`
+    04-mostly-cloudy-day-beach-shells
+    04-mostly-cloudy-day-citypark-ukelele
+    04-mostly-cloudy-day-creek-feet
+    04-mostly-cloudy-day-field-biking
+    04-mostly-cloudy-day-field-hiking
+    04-mostly-cloudy-day-hills-painting
+    04-mostly-cloudy-day-hills-reading
+    04-mostly-cloudy-day-home-flowers
+    04-mostly-cloudy-day-orchard-butterflies
+    04-mostly-cloudy-day-orchard-treeswing
+  `),
 
-  "05": [
-    "05-clear-creek-stars",
-    "05-clear-field-lanterns",
-    "05-clear-hills-camping",
-    "05-clear-hills-telescope",
-    "05-clear-orchard-fireflies",
-  ],
+  "05": scenes(`
+    05-clear-creek-stars
+    05-clear-field-lanterns
+    05-clear-hills-camping
+    05-clear-hills-telescope
+    05-clear-home-lounging
+    05-clear-orchard-fireflies
+  `),
 
-  "06": [
-    "06-mostly-clear-creek-stars",
-    "06-mostly-clear-field-lanterns",
-    "06-mostly-clear-hills-camping",
-    "06-mostly-clear-hills-telescope",
-    "06-mostly-clear-orchard-fireflies",
-  ],
+  "06": scenes(`
+    06-mostly-clear-creek-stars
+    06-mostly-clear-field-lanterns
+    06-mostly-clear-hills-camping
+    06-mostly-clear-hills-telescope
+    06-mostly-clear-home-lounging
+    06-mostly-clear-orchard-fireflies
+  `),
 
-  "07": [
-    "07-partly-cloudy-night-creek-fireflies",
-    "07-partly-cloudy-night-field-fireflies",
-    "07-partly-cloudy-night-hills-smores",
-    "07-partly-cloudy-night-orchard-eating",
-    "07-partly-cloudy-night-rooftop-dinner",
-  ],
+  "07": scenes(`
+    07-partly-cloudy-night-creek-fireflies
+    07-partly-cloudy-night-field-fireflies
+    07-partly-cloudy-night-hills-smores
+    07-partly-cloudy-night-home-inside
+    07-partly-cloudy-night-orchard-eating
+    07-partly-cloudy-night-rooftop-dinner
+  `),
 
-  "08": [
-    "08-mostly-cloudy-night-creek-fireflies",
-    "08-mostly-cloudy-night-field-fireflies",
-    "08-mostly-cloudy-night-hills-smores",
-    "08-mostly-cloudy-night-orchard-eating",
-    "08-mostly-cloudy-night-rooftop-dinner",
-  ],
+  "08": scenes(`
+    08-mostly-cloudy-night-creek-fireflies
+    08-mostly-cloudy-night-field-fireflies
+    08-mostly-cloudy-night-hills-smores
+    08-mostly-cloudy-night-home-inside
+    08-mostly-cloudy-night-orchard-eating
+    08-mostly-cloudy-night-rooftop-dinner
+  `),
 
-  "09": [
-    "09-cloudy-hills-coffee",
-    "09-cloudy-orchard-watching",
-  ],
+  "09": scenes(`
+    09-cloudy-hills-coffee
+    09-cloudy-home-flowers
+    09-cloudy-orchard-watching
+  `),
 
-  "10": [
-    "10-drizzle-creek-leaf",
-    "10-drizzle-field-leaf",
-    "10-drizzle-hills-umbrella",
-    "10-drizzle-orchard-reading",
-  ],
+  "10": scenes(`
+    10-drizzle-creek-leaf
+    10-drizzle-field-leaf
+    10-drizzle-hills-umbrella
+    10-drizzle-home-laundry
+    10-drizzle-orchard-reading
+  `),
 
-  "11": [
-    "11-rain-creek-leaf",
-    "11-rain-field-leaf",
-    "11-rain-hills-umbrella",
-    "11-rain-orchard-reading",
-  ],
+  "11": scenes(`
+    11-rain-creek-leaf
+    11-rain-field-leaf
+    11-rain-hills-umbrella
+    11-rain-home-laundry
+    11-rain-orchard-reading
+  `),
 
-  "12": [
-    "12-heavy-rain-busstop-umbrella",
-    "12-heavy-rain-creek-leaf",
-  ],
+  "12": scenes(`
+    12-heavy-rain-busstop-umbrella
+    12-heavy-rain-creek-leaf
+  `),
 
-  "13": [
-    "13-flurries-citypark-snowman",
-    "13-flurries-creek-iceskating",
-  ],
+  "13": scenes(`
+    13-flurries-citypark-snowman
+    13-flurries-creek-iceskating
+  `),
 
-  "15": [
-    "15-snow-showers-snow-citypark-snowman",
-    "15-snow-showers-snow-creek-skating",
-  ],
+  "15": scenes(`
+    15-snow-showers-snow-citypark-snowman
+    15-snow-showers-snow-creek-skating
+    15-snow-showers-snow-home-shoveling
+  `),
 
-  "16": [
-    "16-blowing-snow-field-snowman",
-  ],
+  "16": scenes(`
+    16-blowing-snow-field-snowman
+  `),
 
-  "17": [
-    "17-heavy-snow-blizzard-creek-cocoa",
-  ],
+  "17": scenes(`
+    17-heavy-snow-blizzard-creek-cocoa
+    17-heavy-snow-blizzard-home-inside
+    17-heavy-snow-blizzard-home-shoveling
+  `),
 
-  "19": [
-    "19-mixed-rain-hail-rain-sleet-busstop-waiting",
-    "19-mixed-rain-hail-rain-sleet-cafe-entering",
-  ],
+  "19": scenes(`
+    19-mixed-rain-hail-rain-sleet-busstop-waiting
+    19-mixed-rain-hail-rain-sleet-cafe-entering
+  `),
 
-  "20": [
-    "20-rain-snow-wintry-mix-citypark-snowman",
-  ],
+  "20": scenes(`
+    20-rain-snow-wintry-mix-citypark-snowman
+  `),
 
-  "25": [
-    "25-breezy-windy-creek-pinwheel",
-  ],
+  "25": scenes(`
+    25-breezy-windy-creek-pinwheel
+    25-breezy-windy-home-laundry
+  `),
 
-  "26": [
-    "26-haze-fog-dust-smoke-field-lantern",
-  ],
+  "26": scenes(`
+    26-haze-fog-dust-smoke-field-lantern
+  `),
 };
 
-
-const SQUARE_CATEGORY_FALLBACK = {
+const SQUARE_FALLBACK = {
   "22": "12",
   "24": "19",
 };
 
-
 /* ==================================================
-   WEATHER -> FROG CATEGORY
+   HELPERS
 ================================================== */
 
-function getSkyCategory(weather) {
-  const code =
-    weather.weather_code;
-
-  const cloudCover =
-    weather.cloud_cover;
-
-  const isDay =
-    weather.is_day;
-
-
-  if (cloudCover == null) {
-    if (code === 0) {
-      return isDay ? "01" : "05";
-    }
-
-    if (code === 1) {
-      return isDay ? "02" : "06";
-    }
-
-    return isDay ? "03" : "07";
-  }
-
-
-  if (code === 0) {
-    return cloudCover <= 20
-      ? isDay
-        ? "01"
-        : "05"
-      : isDay
-        ? "02"
-        : "06";
-  }
-
-
-  if (code === 1) {
-    return cloudCover <= 45
-      ? isDay
-        ? "02"
-        : "06"
-      : isDay
-        ? "03"
-        : "07";
-  }
-
-
-  if (code === 2) {
-    return cloudCover <= 70
-      ? isDay
-        ? "03"
-        : "07"
-      : isDay
-        ? "04"
-        : "08";
-  }
-
-
-  return isDay
-    ? "09"
-    : "08";
+function weatherInfo(code) {
+  return WEATHER[Number(code)] ?? ["Weather", "🌦️"];
 }
 
-
-function getFrogCategory(weather) {
-  const code =
-    weather.weather_code;
-
-  const windSpeed =
-    weather.wind_speed ?? 0;
-
-
-  if ([45, 48].includes(code)) {
-    return "26";
-  }
-
-
-  if ([51, 53, 55].includes(code)) {
-    return "10";
-  }
-
-
-  if ([56, 57].includes(code)) {
-    return "19";
-  }
-
-
-  if ([61, 63].includes(code)) {
-    return "11";
-  }
-
-
-  if (code === 65) {
-    return "12";
-  }
-
-
-  if ([66, 67].includes(code)) {
-    return "20";
-  }
-
-
-  if ([71, 77].includes(code)) {
-    return windSpeed >= 40
-      ? "16"
-      : "13";
-  }
-
-
-  if (code === 73) {
-    return windSpeed >= 40
-      ? "16"
-      : "15";
-  }
-
-
-  if (code === 75) {
-    return windSpeed >= 40
-      ? "16"
-      : "17";
-  }
-
-
-  if ([80, 81].includes(code)) {
-    return "11";
-  }
-
-
-  if (code === 82) {
-    return "12";
-  }
-
-
-  if (code === 85) {
-    return "15";
-  }
-
-
-  if (code === 86) {
-    return "17";
-  }
-
-
-  if (code === 95) {
-    return "22";
-  }
-
-
-  if ([96, 99].includes(code)) {
-    return "24";
-  }
-
-
-  /*
-    Overcast at night uses the darker
-    mostly-cloudy-night category.
-  */
-
-  if (code === 3) {
-    return weather.is_day
-      ? "09"
-      : "08";
-  }
-
-
-  /*
-    Strong wind overrides otherwise ordinary
-    clear/cloudy weather.
-  */
-
-  if (
-    [0, 1, 2].includes(code) &&
-    windSpeed >= 40
-  ) {
-    return "25";
-  }
-
-
-  if ([0, 1, 2].includes(code)) {
-    return getSkyCategory(weather);
-  }
-
-
-  return weather.is_day
-    ? "09"
-    : "08";
-}
-
-
-/* ==================================================
-   STABLE DAILY SCENE
-================================================== */
-
-function hashString(value) {
-  let hash = 0;
-
-  for (
-    let i = 0;
-    i < value.length;
-    i++
-  ) {
-    hash =
-      (
-        hash * 31 +
-        value.charCodeAt(i)
-      ) >>> 0;
-  }
-
-  return hash;
-}
-
-
-function chooseStableItem(
-  items,
-  weather,
-  category,
-) {
-  if (!items?.length) {
-    return null;
-  }
-
-
-  const date =
-    weather.updated_at
-      ?.split("T")[0] ??
-    new Date()
-      .toISOString()
-      .slice(0, 10);
-
-
-  const seed =
-    `${date}-${category}`;
-
-
-  return items[
-    hashString(seed) %
-      items.length
-  ];
-}
-
-
-/* ==================================================
-   WIDE SCENE
-================================================== */
-
-function chooseWideScene(
-  catalog,
-  category,
-  weather,
-) {
-  const scenes =
-    catalog
-      ?.categories
-      ?.[category]
-      ?.scenes;
-
-
-  if (!scenes?.length) {
-    return null;
-  }
-
-
-  const usable =
-    scenes.filter(
-      (scene) =>
-        scene.files?.base,
+function formatTime(value) {
+  const match =
+    String(value ?? "").match(
+      /T(\d{2}):(\d{2})/
     );
 
-
-  return chooseStableItem(
-    usable,
-    weather,
-    category,
-  );
-}
-
-
-/* ==================================================
-   SQUARE SCENE
-================================================== */
-
-function chooseSquareScene(
-  category,
-  weather,
-) {
-  const actualCategory =
-    SQUARE_SCENES[category]
-      ? category
-      : SQUARE_CATEGORY_FALLBACK[
-          category
-        ] ?? "09";
-
-
-  return chooseStableItem(
-    SQUARE_SCENES[
-      actualCategory
-    ],
-    weather,
-    actualCategory,
-  );
-}
-
-
-function getSquareFiles(
-  baseName,
-) {
-  const base =
-    `/images/frogs/square/${baseName}`;
-
-
-  return {
-    background:
-      `${base}_bg.png`,
-
-    midground:
-      `${base}_mg.png`,
-
-    foreground:
-      `${base}_fg.png`,
-  };
-}
-
-
-/* ==================================================
-   DISPLAY HELPERS
-================================================== */
-
-function weatherInfo(
-  code,
-  isDay,
-) {
-  if (!isDay) {
-    if (code === 0) {
-      return [
-        "Clear night",
-        "🌙",
-      ];
-    }
-
-    if (code === 1) {
-      return [
-        "Mostly clear",
-        "🌙",
-      ];
-    }
-
-    if (code === 2) {
-      return [
-        "Partly cloudy",
-        "☁️",
-      ];
-    }
-
-    if (code === 3) {
-      return [
-        "Overcast",
-        "☁️",
-      ];
-    }
+  if (!match) {
+    return "—";
   }
 
+  const hour24 =
+    Number(match[1]);
 
-  return (
-    WEATHER[code] ??
-    ["Weather", "🌤️"]
-  );
+  const hour12 =
+    hour24 % 12 || 12;
+
+  const suffix =
+    hour24 >= 12
+      ? "PM"
+      : "AM";
+
+  return `${hour12}:${match[2]} ${suffix}`;
 }
 
+function formatHour(value) {
+  const match =
+    String(value ?? "").match(
+      /T(\d{2}):/
+    );
+
+  if (!match) {
+    return "—";
+  }
+
+  return `${match[1]}:00`;
+}
+
+function formatDay(value) {
+  if (!value) {
+    return "—";
+  }
+
+  const date =
+    new Date(
+      `${value}T12:00:00`
+    );
+
+  return date.toLocaleDateString(
+    undefined,
+    {
+      weekday: "short",
+    }
+  );
+}
 
 function compass(degrees) {
   if (
     degrees == null ||
     Number.isNaN(
-      Number(degrees),
+      Number(degrees)
     )
   ) {
     return "—";
   }
-
 
   const directions = [
     "N",
@@ -632,849 +315,1452 @@ function compass(degrees) {
     "NW",
   ];
 
-
   return directions[
     Math.round(
-      Number(degrees) / 45,
+      Number(degrees) / 45
     ) % 8
   ];
 }
 
-
-function formatTime(iso) {
-  if (!iso) {
-    return "—";
+function moonPhaseEmoji(value) {
+  if (
+    value == null ||
+    Number.isNaN(
+      Number(value)
+    )
+  ) {
+    return "🌙";
   }
 
+  const phases = [
+    "🌑",
+    "🌒",
+    "🌓",
+    "🌔",
+    "🌕",
+    "🌖",
+    "🌗",
+    "🌘",
+  ];
 
-  return new Date(
-    iso,
-  ).toLocaleTimeString(
-    [],
-    {
-      hour: "2-digit",
-      minute: "2-digit",
-    },
-  );
+  const phase =
+    (
+      (
+        Number(value)
+        % 1
+      )
+      + 1
+    )
+    % 1;
+
+  return phases[
+    Math.round(
+      phase * 8
+    ) % 8
+  ];
 }
 
+/* ==================================================
+   FROG CATEGORY
+================================================== */
 
-function uvLabel(uv) {
-  if (uv < 3) {
-    return "Low";
+function getFrogCategory(
+  weather
+) {
+  const code =
+    Number(
+      weather.weather_code
+      ?? 0
+    );
+
+  const wind =
+    Number(
+      weather.wind_speed
+      ?? 0
+    );
+
+  const cloud =
+    Number(
+      weather.cloud_cover
+      ?? 0
+    );
+
+  const isDay =
+    Boolean(
+      weather.is_day
+    );
+
+  if (code <= 2) {
+    if (wind >= 40) {
+      return "25";
+    }
+
+    if (code === 0) {
+      return cloud <= 20
+        ? (
+            isDay
+              ? "01"
+              : "05"
+          )
+        : (
+            isDay
+              ? "02"
+              : "06"
+          );
+    }
+
+    if (code === 1) {
+      return cloud <= 45
+        ? (
+            isDay
+              ? "02"
+              : "06"
+          )
+        : (
+            isDay
+              ? "03"
+              : "07"
+          );
+    }
+
+    return cloud <= 70
+      ? (
+          isDay
+            ? "03"
+            : "07"
+        )
+      : (
+          isDay
+            ? "04"
+            : "08"
+        );
   }
 
-  if (uv < 6) {
-    return "Moderate";
+  if (code === 3) {
+    return isDay
+      ? "09"
+      : "08";
   }
 
-  if (uv < 8) {
-    return "High";
-  }
+  switch (code) {
+    case 45:
+    case 48:
+      return "26";
 
-  if (uv < 11) {
-    return "Very high";
-  }
+    case 51:
+    case 53:
+    case 55:
+      return "10";
 
-  return "Extreme";
+    case 56:
+    case 57:
+      return "19";
+
+    case 61:
+    case 63:
+    case 80:
+    case 81:
+      return "11";
+
+    case 65:
+    case 82:
+      return "12";
+
+    case 66:
+    case 67:
+      return "20";
+
+    case 71:
+    case 77:
+      return wind >= 40
+        ? "16"
+        : "13";
+
+    case 73:
+    case 85:
+      return wind >= 40
+        ? "16"
+        : "15";
+
+    case 75:
+    case 86:
+      return wind >= 40
+        ? "16"
+        : "17";
+
+    case 95:
+      return "22";
+
+    case 96:
+    case 99:
+      return "24";
+
+    default:
+      return isDay
+        ? "09"
+        : "08";
+  }
 }
 
+/* ==================================================
+   STABLE SCENE PICK
+================================================== */
+
+function stablePick(
+  items,
+  seed
+) {
+  if (!items?.length) {
+    return null;
+  }
+
+  let hash = 0;
+
+  for (const char of seed) {
+    hash =
+      (
+        hash * 31
+        + char.charCodeAt(0)
+      ) >>> 0;
+  }
+
+  return items[
+    hash
+    % items.length
+  ];
+}
 
 /* ==================================================
    METRICS
-
-   Shared by wide and square modes.
 ================================================== */
 
-function getMetrics(weather) {
-  const precipitationNow =
-    Number(
-      weather.precipitation_now ?? 0,
+function getMetrics(
+  weather
+) {
+  const moonEmoji =
+    moonPhaseEmoji(
+      weather.moon_phase
     );
-
 
   return [
     {
-      label: "Feels like",
+      label:
+        "Rain",
 
       value:
-        `${Math.round(
-          weather.feels_like,
-        )}°`,
+        `${
+          Math.round(
+            weather.rain_chance
+            ?? 0
+          )
+        }%`,
+
+      meta: [
+        `${
+          Number(
+            weather.precipitation_total
+            ?? 0
+          ).toFixed(1)
+        } mm total`,
+      ],
     },
 
-
     {
-      label: "High / Low",
+      label:
+        "Wind",
 
       value:
-        `${Math.round(
-          weather.high,
-        )}° · ${Math.round(
-          weather.low,
-        )}°`,
-    },
+        `${
+          Math.round(
+            weather.wind_speed
+            ?? 0
+          )
+        } km/h`,
 
-
-    {
-      label: "Rain",
-
-      value:
-        `${Math.round(
-          weather.rain_chance,
-        )}%`,
-
-      sub:
-        `${precipitationNow.toFixed(1)} mm now`,
-    },
-
-
-    {
-      label: "Wind",
-
-      value:
-        `${Math.round(
-          weather.wind_speed,
-        )} km/h`,
-
-      sub:
+      meta: [
         compass(
-          weather.wind_direction,
+          weather.wind_direction
         ),
+      ],
     },
 
-
     {
-      label: "Gusts",
+      label:
+        "Gusts",
 
       value:
-        `${Math.round(
-          weather.wind_gusts,
-        )} km/h`,
+        `${
+          Math.round(
+            weather.wind_gusts
+            ?? 0
+          )
+        } km/h`,
     },
 
-
     {
-      label: "Pressure",
+      label:
+        "Pressure",
 
       value:
-        `${Math.round(
-          weather.pressure,
-        )}`,
-
-      sub:
-        "hPa",
+        `${
+          Math.round(
+            weather.pressure
+            ?? 0
+          )
+        } hPa`,
     },
 
-
     {
-      label: "UV",
+      label:
+        "UV",
 
       value:
         Number(
-          weather.uv_max ?? 0,
+          weather.uv
+          ?? 0
         ).toFixed(1),
 
-      sub:
-        uvLabel(
-          weather.uv_max ?? 0,
-        ),
+      meta: [
+        `Max ${
+          Number(
+            weather.uv_max
+            ?? 0
+          ).toFixed(1)
+        } at ${
+          formatTime(
+            weather.uv_max_time
+          )
+        }`,
+      ],
     },
 
-
     {
-      label: "Cloud",
+      label:
+        "Humidity",
 
       value:
-        weather.cloud_cover == null
-          ? "—"
-          : `${Math.round(
-              weather.cloud_cover,
-            )}%`,
+        `${
+          Math.round(
+            weather.humidity
+            ?? 0
+          )
+        }%`,
+    },
+
+    {
+      label:
+        "Sunrise / Sunset",
+
+      value:
+        `↑ ${
+          formatTime(
+            weather.sunrise
+          )
+        }`,
+
+      meta: [
+        `↓ ${
+          formatTime(
+            weather.sunset
+          )
+        }`,
+      ],
+
+      special:
+        "sun",
+    },
+
+    {
+      label:
+        "Moon phase",
+
+      value:
+        moonEmoji,
+
+      meta: [
+        `↑ ${
+          formatTime(
+            weather.moonrise
+          )
+        }`,
+
+        `↓ ${
+          formatTime(
+            weather.moonset
+          )
+        }`,
+      ],
+
+      special:
+        "moon",
     },
   ];
 }
 
-
 /* ==================================================
-   FROG ARTWORK
+   METRIC GRID
 ================================================== */
 
-function FrogArtwork({
-  format,
-  wideScene,
-  squareScene,
+function MetricGrid({
+  metrics,
+  compact = false,
 }) {
-
-  if (format === "wide") {
-    const image =
-      wideScene?.files?.base ??
-      "/images/frogs/wide/09-cloudy-hills-coffee.png";
-
-
-    return (
-      <div className="frog-card wide">
-
-        <img
-          src={image}
-          className="frog-wide-image"
-          alt=""
-        />
-
-      </div>
-    );
-  }
-
-
-  const files =
-    getSquareFiles(
-      squareScene ??
-        "09-cloudy-hills-coffee",
-    );
-
-
   return (
-    <div className="frog-card square">
+    <div
+      className={
+        compact
+          ? "metric-grid compact"
+          : "metric-grid"
+      }
+    >
+      {
+        metrics.map(
+          (metric) => (
+            <div
+              key={
+                metric.label
+              }
+              className={
+                `metric-card ${
+                  metric.special
+                  ?? ""
+                }`
+              }
+            >
+              <div
+                className="metric-label"
+              >
+                {
+                  metric.label
+                }
+              </div>
 
-      <div className="frog-scene">
+              <div
+                className="metric-main-row"
+              >
+                <div
+                  className="metric-value"
+                >
+                  {
+                    metric.value
+                  }
+                </div>
 
-        <img
-          src={files.background}
-          className="scene-layer layer-1"
-          alt=""
-        />
-
-
-        <img
-          src={files.midground}
-          className="scene-layer layer-2"
-          alt=""
-        />
-
-
-        <img
-          src={files.foreground}
-          className="scene-layer layer-3"
-          alt=""
-        />
-
-      </div>
-
+                {
+                  metric.meta
+                    ?.length
+                    > 0
+                    && (
+                      <div
+                        className="metric-meta"
+                      >
+                        {
+                          metric.meta.map(
+                            (
+                              item,
+                              index
+                            ) => (
+                              <span
+                                key={
+                                  `${metric.label}-${index}`
+                                }
+                              >
+                                {
+                                  item
+                                }
+                              </span>
+                            )
+                          )
+                        }
+                      </div>
+                    )
+                }
+              </div>
+            </div>
+          )
+        )
+      }
     </div>
   );
 }
 
+/* ==================================================
+   FROG ART
+================================================== */
+
+function FrogArtwork({
+  weather,
+  wideCatalog,
+  format,
+}) {
+  const category =
+    getFrogCategory(
+      weather
+    );
+
+  const date =
+    String(
+      weather.updated_at
+      ?? ""
+    ).slice(
+      0,
+      10
+    );
+
+  if (
+    format === "wide"
+  ) {
+    const options =
+      wideCatalog
+        ?.categories
+        ?.[category]
+      ?? [];
+
+    const scene =
+      stablePick(
+        options,
+        `${date}-${category}`
+      );
+
+    const src =
+      scene
+        ?.files
+        ?.base
+      ?? (
+        "/images/frogs/wide/"
+        + "09-cloudy-hills-coffee.png"
+      );
+
+    return (
+      <div
+        className="frog-card wide"
+      >
+        <img
+          src={src}
+          alt=""
+          className="frog-wide-image"
+        />
+      </div>
+    );
+  }
+
+  const squareCategory =
+    SQUARE_SCENES[
+      category
+    ]
+      ? category
+      : (
+          SQUARE_FALLBACK[
+            category
+          ]
+          ?? "09"
+        );
+
+  const scene =
+    stablePick(
+      SQUARE_SCENES[
+        squareCategory
+      ],
+      `${date}-${squareCategory}`
+    );
+
+  const base =
+    `/images/frogs/square/${scene}`;
+
+  return (
+    <div
+      className="frog-card square"
+    >
+      {
+        [
+          `${base}_bg.png`,
+          `${base}_mg.png`,
+          `${base}_fg.png`,
+        ].map(
+          (
+            src,
+            index
+          ) => (
+            <img
+              key={src}
+              src={src}
+              alt=""
+              className={
+                `scene-layer layer-${
+                  index + 1
+                }`
+              }
+            />
+          )
+        )
+      }
+    </div>
+  );
+}
 
 /* ==================================================
-   WIDE HERO
+   CURRENT WEATHER
+================================================== */
+
+function CurrentSummary({
+  weather,
+  icon,
+}) {
+  return (
+    <div
+      className="current-summary"
+    >
+      <div
+        className="current-reading"
+      >
+        <div
+          className="current-main"
+        >
+          <div
+            className="current-condition-icon"
+          >
+            {icon}
+          </div>
+
+          <div
+            className="current-temp"
+          >
+            {
+              Math.round(
+                weather.temperature
+              )
+            }°
+          </div>
+        </div>
+
+        <div
+          className="current-side-meta"
+        >
+          <div
+            className="side-meta-block"
+          >
+            <span
+              className="side-meta-label"
+            >
+              Feels like
+            </span>
+
+            <span
+              className="side-meta-value"
+            >
+              {
+                Math.round(
+                  weather.feels_like
+                  ?? 0
+                )
+              }°
+            </span>
+          </div>
+
+          <div
+            className="side-meta-block"
+          >
+            <span
+              className="side-meta-label"
+            >
+              High / Low
+            </span>
+
+            <span
+              className="side-meta-value"
+            >
+              {
+                Math.round(
+                  weather.high
+                  ?? 0
+                )
+              }°
+              {" · "}
+              {
+                Math.round(
+                  weather.low
+                  ?? 0
+                )
+              }°
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ==================================================
+   PRECIP GRAPH
+================================================== */
+
+function PrecipitationGraph({
+  points,
+}) {
+  if (!points?.length) {
+    return null;
+  }
+
+  const width = 500;
+  const height = 76;
+  const top = 6;
+  const bottom = 58;
+
+  const usableHeight =
+    bottom - top;
+
+  const coordinates =
+    points.map(
+      (
+        point,
+        index
+      ) => {
+        const x =
+          points.length === 1
+            ? width / 2
+            : (
+                index
+                / (
+                    points.length
+                    - 1
+                  )
+              )
+              * width;
+
+        const probability =
+          Math.max(
+            0,
+            Math.min(
+              100,
+              Number(
+                point.probability
+                ?? 0
+              )
+            )
+          );
+
+        const y =
+          bottom
+          - (
+              probability
+              / 100
+            )
+            * usableHeight;
+
+        return {
+          x,
+          y,
+        };
+      }
+    );
+
+  const linePoints =
+    coordinates
+      .map(
+        ({ x, y }) =>
+          `${x},${y}`
+      )
+      .join(" ");
+
+  const areaPoints = [
+    `0,${bottom}`,
+
+    ...coordinates.map(
+      ({ x, y }) =>
+        `${x},${y}`
+    ),
+
+    `${width},${bottom}`,
+  ].join(" ");
+
+  return (
+    <div
+      className="mini-precip-chart"
+    >
+      <div
+        className="mini-precip-percent-row"
+      >
+        {
+          points.map(
+            (
+              point,
+              index
+            ) => (
+              <span
+                key={
+                  `${point.time}-percent-${index}`
+                }
+              >
+                {
+                  Math.round(
+                    point.probability
+                    ?? 0
+                  )
+                }%
+              </span>
+            )
+          )
+        }
+      </div>
+
+      <svg
+        className="mini-precip-svg"
+        viewBox={
+          `0 0 ${width} ${height}`
+        }
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <line
+          className="mini-precip-baseline"
+          x1="0"
+          x2={width}
+          y1={bottom}
+          y2={bottom}
+        />
+
+        <polygon
+          className="mini-precip-area"
+          points={
+            areaPoints
+          }
+        />
+
+        <polyline
+          className="mini-precip-line"
+          points={
+            linePoints
+          }
+        />
+      </svg>
+
+      <div
+        className="mini-precip-time-row"
+      >
+        {
+          points.map(
+            (
+              point,
+              index
+            ) => (
+              <span
+                key={
+                  `${point.time}-time-${index}`
+                }
+              >
+                {
+                  formatHour(
+                    point.time
+                  )
+                }
+              </span>
+            )
+          )
+        }
+      </div>
+    </div>
+  );
+}
+
+/* ==================================================
+   8 DAY FORECAST
+================================================== */
+
+function WeekForecast({
+  days,
+}) {
+  if (
+    !Array.isArray(days)
+    || days.length === 0
+  ) {
+    return null;
+  }
+
+  const forecastDays =
+    days.slice(
+      0,
+      8
+    );
+
+  return (
+    <div
+      className="mini-week"
+    >
+      {
+        forecastDays.map(
+          (
+            day,
+            index
+          ) => {
+            const [
+              ,
+              icon,
+            ] =
+              weatherInfo(
+                day.weather_code
+              );
+
+            return (
+              <div
+                key={
+                  day.date
+                  ?? index
+                }
+                className="mini-day"
+              >
+                <div
+                  className="mini-day-name"
+                >
+                  {
+                    formatDay(
+                      day.date
+                    )
+                  }
+                </div>
+
+                <div
+                  className="mini-day-icon"
+                >
+                  {icon}
+                </div>
+
+                <div
+                  className="mini-day-temps"
+                >
+                  <span
+                    className="mini-day-high"
+                  >
+                    {
+                      Math.round(
+                        day.high
+                      )
+                    }°
+                  </span>
+
+                  <span
+                    className="mini-day-low"
+                  >
+                    {
+                      Math.round(
+                        day.low
+                      )
+                    }°
+                  </span>
+                </div>
+
+                <div
+                  className="mini-day-rain"
+                >
+                  {
+                    Math.round(
+                      day.rain_chance
+                      ?? 0
+                    )
+                  }%
+                </div>
+              </div>
+            );
+          }
+        )
+      }
+    </div>
+  );
+}
+
+/* ==================================================
+   FORECAST STRIP
+================================================== */
+
+function ForecastStrip({
+  weather,
+}) {
+  const precipPoints =
+    weather.precip_chart
+    ?? [];
+
+  const showPrecip =
+    precipPoints.some(
+      (point) =>
+        Number(
+          point.probability
+          ?? 0
+        )
+        >= PRECIP_THRESHOLD
+        ||
+        Number(
+          point.precipitation
+          ?? 0
+        )
+        > 0
+    );
+
+  return (
+    <div
+      className={
+        showPrecip
+          ? "forecast-strip forecast-strip-split"
+          : "forecast-strip forecast-strip-full"
+      }
+    >
+      {
+        showPrecip
+        && (
+          <section
+            className="forecast-glass precip-panel"
+          >
+            <div
+              className="forecast-section-header"
+            >
+              <span>
+                Precipitation
+              </span>
+
+              <span
+                className="forecast-section-note"
+              >
+                Next 24h
+              </span>
+            </div>
+
+            <PrecipitationGraph
+              points={
+                precipPoints
+              }
+            />
+          </section>
+        )
+      }
+
+      <section
+        className="forecast-glass week-panel"
+      >
+        <WeekForecast
+          days={
+            weather.weekly
+          }
+        />
+      </section>
+    </div>
+  );
+}
+
+/* ==================================================
+   HERO
 ================================================== */
 
 function WideHero({
   weather,
-  info,
-  wideScene,
-  squareScene,
+  wideCatalog,
 }) {
-
-  const metrics =
-    getMetrics(weather);
-
+  const [
+    ,
+    icon,
+  ] =
+    weatherInfo(
+      weather.weather_code
+    );
 
   return (
-    <section className="hero-card wide-hero">
+    <section
+      className="hero-card"
+    >
+      <div
+        className="hero-copy"
+      >
+        <div
+          className="hero-main"
+        >
+          <CurrentSummary
+            weather={
+              weather
+            }
+            icon={
+              icon
+            }
+          />
 
-      <div className="hero-copy">
-
-        <div className="hero-main">
-
-
-          {/* TEMPERATURE */}
-
-          <div className="hero-temp-block">
-
-            <div className="temperature">
-
-              {Math.round(
-                weather.temperature,
-              )}
-              °
-
-            </div>
-
-
-            <div className="hero-temp-caption">
-              Current temperature
-            </div>
-
-          </div>
-
-
-          {/* CONDITION */}
-
-          <div className="hero-condition">
-
-            <div className="hero-badge">
-
-              <span className="weather-icon">
-                {info[1]}
-              </span>
-
-
-              <span>
-                {info[0]}
-              </span>
-
-            </div>
-
-          </div>
-
-
-          {/* METRICS */}
-
-          <div className="hero-meta">
-
-            {metrics.map(
-              (
-                metric,
-                index,
-              ) => (
-
-                <div
-                  className="hero-meta-card"
-                  key={
-                    `${metric.label}-${index}`
-                  }
-                >
-
-                  <span className="hero-meta-label">
-                    {metric.label}
-                  </span>
-
-
-                  <span className="hero-meta-value">
-                    {metric.value}
-                  </span>
-
-
-                  {metric.sub && (
-
-                    <span className="hero-meta-sub">
-                      {metric.sub}
-                    </span>
-
-                  )}
-
-                </div>
-
-              ),
-            )}
-
-          </div>
-
+          <MetricGrid
+            metrics={
+              getMetrics(
+                weather
+              )
+            }
+          />
         </div>
-
       </div>
-
 
       <FrogArtwork
         format="wide"
-        wideScene={wideScene}
-        squareScene={squareScene}
+        weather={
+          weather
+        }
+        wideCatalog={
+          wideCatalog
+        }
       />
-
     </section>
   );
 }
 
-
 /* ==================================================
-   SQUARE HERO
-
-   Still retained as a manual backup.
-
-   It will ONLY appear when:
-
-     VITE_FROG_FORMAT=square
+   SQUARE BACKUP
 ================================================== */
 
 function SquareHero({
   weather,
-  info,
-  wideScene,
-  squareScene,
+  wideCatalog,
 }) {
-
-  const metrics =
-    getMetrics(weather);
-
+  const [
+    condition,
+    icon,
+  ] =
+    weatherInfo(
+      weather.weather_code
+    );
 
   return (
-    <section className="square-dashboard-card">
-
-      <div className="square-hero-frame">
-
-
+    <section
+      className="square-dashboard-card"
+    >
+      <div
+        className="square-frame"
+      >
         <FrogArtwork
           format="square"
-          wideScene={wideScene}
-          squareScene={squareScene}
+          weather={
+            weather
+          }
+          wideCatalog={
+            wideCatalog
+          }
         />
 
-
-        <div className="square-weather-overlay">
-
-          <div className="square-top-panel">
-
-
-            {/* TEMP */}
-
-            <div className="square-temp-column">
-
-              <div className="square-temperature">
-
-                {Math.round(
-                  weather.temperature,
-                )}
-                °
-
-              </div>
-
-
-              <div className="square-temp-caption">
-                Current temperature
-              </div>
-
+        <div
+          className="square-overlay"
+        >
+          <div
+            className="square-summary"
+          >
+            <div
+              className="square-condition"
+            >
+              {icon} {condition}
             </div>
 
-
-            {/* RIGHT SIDE */}
-
-            <div className="square-info-column">
-
-
-              <div className="square-condition-line">
-
-                <div className="square-condition-pill">
-
-                  <span className="weather-icon">
-                    {info[1]}
-                  </span>
-
-
-                  <span>
-                    {info[0]}
-                  </span>
-
-                </div>
-
-
-                <div className="square-overlay-time">
-
-                  {formatTime(
-                    weather.updated_at,
-                  )}
-
-                </div>
-
-              </div>
-
-
-              <div className="square-mini-grid">
-
-                {metrics.map(
-                  (
-                    metric,
-                    index,
-                  ) => (
-
-                    <div
-                      className="square-mini-card"
-                      key={
-                        `${metric.label}-${index}`
-                      }
-                    >
-
-                      <span className="square-mini-label">
-                        {metric.label}
-                      </span>
-
-
-                      <strong className="square-mini-value">
-                        {metric.value}
-                      </strong>
-
-
-                      {metric.sub && (
-
-                        <span className="square-mini-sub">
-                          {metric.sub}
-                        </span>
-
-                      )}
-
-                    </div>
-
-                  ),
-                )}
-
-              </div>
-
+            <div
+              className="square-temp"
+            >
+              {
+                Math.round(
+                  weather.temperature
+                )
+              }°
             </div>
 
+            <div>
+              Feels{" "}
+              {
+                Math.round(
+                  weather.feels_like
+                  ?? 0
+                )
+              }°
+              {" · "}
+              H{" "}
+              {
+                Math.round(
+                  weather.high
+                  ?? 0
+                )
+              }°
+              {" · "}
+              L{" "}
+              {
+                Math.round(
+                  weather.low
+                  ?? 0
+                )
+              }°
+            </div>
           </div>
 
+          <MetricGrid
+            metrics={
+              getMetrics(
+                weather
+              )
+            }
+            compact
+          />
         </div>
-
       </div>
-
     </section>
   );
 }
-
 
 /* ==================================================
    APP
 ================================================== */
 
-export default function App() {
-
-  /*
-    This no longer changes when the browser
-    is resized.
-
-    Default is always "wide".
-  */
-
-  const frogFormat =
-    useFrogFormat();
-
-
+function App() {
   const [
     weather,
     setWeather,
-  ] = useState(null);
-
+  ] =
+    useState(null);
 
   const [
-    frogCatalog,
-    setFrogCatalog,
-  ] = useState(null);
-
+    wideCatalog,
+    setWideCatalog,
+  ] =
+    useState(null);
 
   const [
     error,
     setError,
-  ] = useState("");
+  ] =
+    useState(null);
 
+  useEffect(
+    () => {
+      let active = true;
 
-  /* ==================================================
-     LOAD WEATHER
-  ================================================== */
+      async function loadWeather() {
+        try {
+          const response =
+            await fetch(
+              "/api/weather"
+            );
 
-  async function loadWeather() {
-    try {
+          if (
+            !response.ok
+          ) {
+            throw new Error(
+              `Weather request failed: ${
+                response.status
+              }`
+            );
+          }
 
-      setError("");
+          const data =
+            await response.json();
 
+          if (active) {
+            setWeather(
+              data
+            );
 
-      const response =
-        await fetch(
-          "/api/weather",
-        );
+            setError(
+              null
+            );
+          }
 
-
-      if (!response.ok) {
-        throw new Error(
-          "Weather request failed",
-        );
+        } catch (err) {
+          if (active) {
+            setError(
+              err.message
+            );
+          }
+        }
       }
 
+      loadWeather();
 
-      const data =
-        await response.json();
-
-
-      setWeather(data);
-
-    } catch (err) {
-
-      setError(
-        err.message,
-      );
-
-    }
-  }
-
-
-  /* ==================================================
-     LOAD WIDE FROG CATALOG
-  ================================================== */
-
-  async function loadFrogCatalog() {
-    try {
-
-      const response =
-        await fetch(
-          "/frog-scenes-wide.json",
+      const interval =
+        setInterval(
+          loadWeather,
+          10
+          * 60
+          * 1000
         );
 
+      return () => {
+        active = false;
 
-      if (!response.ok) {
-        throw new Error(
-          "Could not load frog catalog",
+        clearInterval(
+          interval
         );
-      }
+      };
+    },
+    []
+  );
 
+  useEffect(
+    () => {
+      let active = true;
 
-      const data =
-        await response.json();
+      fetch(
+        "/frog-scenes-wide.json"
+      )
+        .then(
+          (
+            response
+          ) => {
+            if (
+              !response.ok
+            ) {
+              throw new Error(
+                "Could not load Frog scene catalogue"
+              );
+            }
 
+            return response.json();
+          }
+        )
+        .then(
+          (data) => {
+            if (active) {
+              setWideCatalog(
+                data
+              );
+            }
+          }
+        )
+        .catch(
+          console.error
+        );
 
-      setFrogCatalog(data);
-
-    } catch (err) {
-
-      console.error(err);
-
-    }
-  }
-
-
-  /* ==================================================
-     INITIAL LOAD + WEATHER REFRESH
-  ================================================== */
-
-  useEffect(() => {
-
-    loadWeather();
-
-    loadFrogCatalog();
-
-
-    const timer =
-      setInterval(
-        loadWeather,
-        10 * 60 * 1000,
-      );
-
-
-    return () => {
-      clearInterval(timer);
-    };
-
-  }, []);
-
-
-  /* ==================================================
-     ERROR
-  ================================================== */
+      return () => {
+        active = false;
+      };
+    },
+    []
+  );
 
   if (error) {
     return (
-      <main className="shell center">
-
-        <div className="error-card">
-
-          <div className="frog">
+      <main
+        className="shell center"
+      >
+        <div
+          className="error-card"
+        >
+          <div
+            className="frog"
+          >
             🐸
           </div>
 
-
-          <h1>
-            Weather went for a swim.
-          </h1>
-
+          <h2>
+            Weather unavailable
+          </h2>
 
           <p>
             {error}
           </p>
 
-
           <button
             onClick={
-              loadWeather
+              () =>
+                window
+                  .location
+                  .reload()
             }
           >
             Try again
           </button>
-
         </div>
-
       </main>
     );
   }
-
-
-  /* ==================================================
-     LOADING
-  ================================================== */
 
   if (!weather) {
     return (
-      <main className="shell center">
-
-        <div className="loading">
-          Finding today’s weather…
+      <main
+        className="shell center"
+      >
+        <div
+          className="loading"
+        >
+          Loading weather…
         </div>
-
       </main>
     );
   }
 
-
-  /* ==================================================
-     SCENE SELECTION
-  ================================================== */
-
-  const category =
-    getFrogCategory(
-      weather,
-    );
-
-
-  const wideScene =
-    chooseWideScene(
-      frogCatalog,
-      category,
-      weather,
-    );
-
-
-  const squareScene =
-    chooseSquareScene(
-      category,
-      weather,
-    );
-
-
-  const info =
-    weatherInfo(
-      weather.weather_code,
-      weather.is_day,
-    );
-
-
-  /* ==================================================
-     PAGE
-  ================================================== */
-
   return (
     <main
-      className={`shell ${
-        weather.is_day
-          ? "day"
-          : "night"
-      }`}
+      className={
+        `shell ${
+          weather.is_day
+            ? "day"
+            : "night"
+        }`
+      }
     >
+      <div
+        className="glow glow-one"
+      />
 
-      <div className="glow glow-one" />
+      <div
+        className="glow glow-two"
+      />
 
-      <div className="glow glow-two" />
-
-
-      <section className="dashboard">
-
-
-        {/* HEADER */}
-
+      <div
+        className="dashboard"
+      >
         <header>
-
           <div>
-
-            <div className="kicker">
-
-              TODAY ·{" "}
-
-              {weather.location.toUpperCase()}
-
+            <div
+              className="kicker"
+            >
+              TODAY · {
+                weather.location
+              }
             </div>
-
 
             <h1>
               Weather, with frog.
             </h1>
-
           </div>
 
-
-          <div className="updated">
-
+          <div
+            className="updated"
+          >
             Updated{" "}
-
-            {formatTime(
-              weather.updated_at,
-            )}
-
+            {
+              formatTime(
+                weather.updated_at
+              )
+            }
           </div>
-
         </header>
 
+        {
+          FROG_FORMAT
+          === "square"
+            ? (
+                <SquareHero
+                  weather={
+                    weather
+                  }
+                  wideCatalog={
+                    wideCatalog
+                  }
+                />
+              )
+            : (
+                <>
+                  <WideHero
+                    weather={
+                      weather
+                    }
+                    wideCatalog={
+                      wideCatalog
+                    }
+                  />
 
-        {/* HERO
-
-            Normal/default behaviour:
-              ALWAYS WIDE
-
-            Square only happens if manually forced
-            with VITE_FROG_FORMAT=square.
-        */}
-
-        {frogFormat === "square" ? (
-
-          <SquareHero
-            weather={weather}
-            info={info}
-            wideScene={wideScene}
-            squareScene={squareScene}
-          />
-
-        ) : (
-
-          <WideHero
-            weather={weather}
-            info={info}
-            wideScene={wideScene}
-            squareScene={squareScene}
-          />
-
-        )}
-
-
-        {/* SUNRISE / SUNSET */}
-
-        <footer>
-
-          <span>
-
-            Sunrise{" "}
-
-            {formatTime(
-              weather.sunrise,
-            )}
-
-          </span>
-
-
-          <span className="dot">
-            •
-          </span>
-
-
-          <span>
-
-            Sunset{" "}
-
-            {formatTime(
-              weather.sunset,
-            )}
-
-          </span>
-
-        </footer>
-
-
-      </section>
-
+                  <ForecastStrip
+                    weather={
+                      weather
+                    }
+                  />
+                </>
+              )
+        }
+      </div>
     </main>
   );
 }
+
+export default App;

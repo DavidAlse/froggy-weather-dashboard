@@ -8,55 +8,65 @@
     "Segoe UI",
     sans-serif;
 
-  color: #f7fafc;
-  background: #0d151a;
+  color:
+    #f7fafc;
 
-  font-synthesis: none;
+  background:
+    #0d151a;
+
+  font-synthesis:
+    none;
 }
-
 
 /* ==================================================
    GLOBAL
 ================================================== */
 
 * {
-  box-sizing: border-box;
+  box-sizing:
+    border-box;
 }
-
 
 html,
 body,
 #root {
-  margin: 0;
-  min-height: 100%;
-}
+  margin:
+    0;
 
+  min-height:
+    100%;
+}
 
 body {
-  min-width: 320px;
-  background: #0d151a;
-}
+  min-width:
+    320px;
 
+  background:
+    #0d151a;
+}
 
 button {
-  font: inherit;
+  font:
+    inherit;
 }
-
 
 /* ==================================================
    PAGE
 ================================================== */
 
 .shell {
-  position: relative;
+  position:
+    relative;
 
-  min-height: 100vh;
+  min-height:
+    100vh;
 
-  overflow: hidden;
+  overflow-x:
+    hidden;
 
   padding:
     clamp(
-      12px,
+      7px,
       2vw,
       28px
     );
@@ -64,138 +74,197 @@ button {
   background:
     radial-gradient(
       circle at 15% 10%,
-      rgba(148, 221, 183, 0.12),
+      rgba(
+        148,
+        221,
+        183,
+        0.12
+      ),
       transparent 26rem
     ),
     linear-gradient(
       145deg,
-      #111c22 0%,
+      #111c22,
       #0c1419 55%,
-      #101a1e 100%
+      #101a1e
     );
 }
-
 
 .shell.day {
   background:
     radial-gradient(
       circle at 15% 10%,
-      rgba(187, 236, 207, 0.16),
+      rgba(
+        187,
+        236,
+        207,
+        0.16
+      ),
       transparent 28rem
     ),
     radial-gradient(
       circle at 88% 18%,
-      rgba(127, 187, 219, 0.10),
+      rgba(
+        127,
+        187,
+        219,
+        0.1
+      ),
       transparent 26rem
     ),
     linear-gradient(
       145deg,
-      #15242a 0%,
+      #15242a,
       #0e171c 58%,
-      #101a1e 100%
+      #101a1e
     );
 }
-
 
 .shell.night {
   background:
     radial-gradient(
       circle at 14% 8%,
-      rgba(77, 108, 144, 0.14),
+      rgba(
+        77,
+        108,
+        144,
+        0.14
+      ),
       transparent 30rem
     ),
     radial-gradient(
       circle at 82% 12%,
-      rgba(86, 78, 142, 0.10),
+      rgba(
+        86,
+        78,
+        142,
+        0.1
+      ),
       transparent 30rem
     ),
     linear-gradient(
       145deg,
-      #10181f 0%,
+      #10181f,
       #081015 56%,
-      #0a1218 100%
+      #0a1218
     );
 }
 
-
 .center {
-  display: grid;
-  place-items: center;
-}
+  display:
+    grid;
 
+  place-items:
+    center;
+}
 
 .dashboard {
-  position: relative;
+  position:
+    relative;
 
-  z-index: 2;
+  z-index:
+    2;
 
-  width: 100%;
-  max-width: 1500px;
+  width:
+    100%;
 
-  margin: 0 auto;
+  max-width:
+    1500px;
+
+  margin:
+    auto;
 }
-
 
 /* ==================================================
    SHARED GLASS
 ================================================== */
 
 header,
-footer,
 .hero-card,
-.square-dashboard-card {
+.square-dashboard-card,
+.forecast-glass {
   border:
     1px solid
-    rgba(255, 255, 255, 0.09);
+    rgba(
+      255,
+      255,
+      255,
+      0.09
+    );
 
   box-shadow:
     0 24px 70px
-      rgba(0, 0, 0, 0.22),
+    rgba(
+      0,
+      0,
+      0,
+      0.22
+    ),
     inset
-      0 1px 0
-      rgba(255, 255, 255, 0.04);
+    0 1px 0
+    rgba(
+      255,
+      255,
+      255,
+      0.04
+    );
 
   backdrop-filter:
     blur(16px);
-}
 
+  -webkit-backdrop-filter:
+    blur(16px);
+}
 
 /* ==================================================
    HEADER
 ================================================== */
 
 header {
-  display: flex;
+  display:
+    flex;
 
-  align-items: flex-end;
+  align-items:
+    flex-end;
 
-  justify-content: space-between;
+  justify-content:
+    space-between;
 
-  gap: 24px;
+  gap:
+    24px;
+
+  margin-bottom:
+    12px;
 
   padding:
     17px 22px;
 
-  margin-bottom: 12px;
-
-  border-radius: 24px;
+  border-radius:
+    24px;
 
   background:
-    rgba(255, 255, 255, 0.035);
+    rgba(
+      255,
+      255,
+      255,
+      0.035
+    );
 }
-
 
 .kicker,
 .updated {
-  color: #9eb1aa;
+  color:
+    #9eb1aa;
 
-  font-size: 0.74rem;
+  font-size:
+    0.74rem;
 
-  letter-spacing: 0.16em;
+  letter-spacing:
+    0.16em;
 
-  text-transform: uppercase;
+  text-transform:
+    uppercase;
 }
-
 
 h1 {
   margin:
@@ -208,502 +277,1167 @@ h1 {
       3rem
     );
 
-  line-height: 1;
+  line-height:
+    1;
 
   letter-spacing:
     -0.04em;
 }
 
-
 /* ==================================================
-   HERO CARD
+   HERO
 ================================================== */
 
 .hero-card {
-  display: flex;
+  display:
+    flex;
 
-  flex-direction: column;
+  flex-direction:
+    column;
 
-  padding: 0;
+  overflow:
+    hidden;
 
-  overflow: hidden;
-
-  border-radius: 34px;
+  border-radius:
+    34px;
 
   background:
     linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.075),
-      rgba(255, 255, 255, 0.022)
+      rgba(
+        255,
+        255,
+        255,
+        0.075
+      ),
+      rgba(
+        255,
+        255,
+        255,
+        0.022
+      )
     );
 }
 
-
-/*
-   Extra bottom padding gives the weather information
-   some breathing room before the Frog artwork begins.
-
-   The background remains the same, so it still blends
-   naturally into the dark sky of the image.
-*/
-
 .hero-copy {
-  position: relative;
+  position:
+    relative;
 
-  z-index: 3;
-
-  width: 100%;
+  z-index:
+    3;
 
   padding:
-    34px
     clamp(
-      36px,
-      4vw,
-      64px
+      14px,
+      2.7vw,
+      42px
     )
-    52px;
+    clamp(
+      8px,
+      3.5vw,
+      52px
+    )
+    clamp(
+      24px,
+      3.5vw,
+      54px
+    );
 }
 
-
 /* ==================================================
-   MAIN INFO LAYOUT
-
-   LEFT:
-      CONDITION
-      TEMPERATURE
-      CAPTION
-
-   RIGHT:
-      4 × 2 METRICS
-
-   Both sides remain roughly the same height.
+   MAIN INFO
 ================================================== */
 
 .hero-main {
-  display: grid;
-
-  grid-template-columns:
-    minmax(
-      270px,
-      340px
-    )
-    minmax(
-      0,
-      800px
-    );
-
-  grid-template-areas:
-    "condition meta"
-    "temp      meta";
-
-  grid-template-rows:
-    42px 1fr;
-
-  justify-content: space-between;
-
-  align-items: stretch;
-
-  column-gap:
+  --tile-height:
     clamp(
-      34px,
-      5vw,
+      36px,
+      5.6vw,
       90px
     );
 
-  row-gap: 5px;
-}
-
-
-/* ==================================================
-   CONDITION
-================================================== */
-
-.hero-condition {
-  grid-area: condition;
-
-  display: grid;
-
-  place-items: center;
-
-  justify-self: center;
-
-  align-self: center;
-
-  width: auto;
-  height: auto;
-
-  margin: 0;
-}
-
-
-.hero-badge {
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  gap: 10px;
-
-  min-height: 39px;
-
-  padding:
-    7px 15px;
-
-  border:
-    1px solid
-    rgba(255, 255, 255, 0.07);
-
-  border-radius: 999px;
-
-  background:
-    rgba(255, 255, 255, 0.05);
-
-  color: #d7e2dd;
-
-  font-size: 1rem;
-
-  white-space: nowrap;
-
-  box-shadow:
-    inset
-    0 1px 0
-    rgba(255, 255, 255, 0.035);
-}
-
-
-.weather-icon {
-  font-size: 1.18em;
-
-  line-height: 1;
-}
-
-
-/* ==================================================
-   TEMPERATURE
-================================================== */
-
-.hero-temp-block {
-  grid-area: temp;
-
-  display: grid;
-
-  justify-items: center;
-
-  align-content: center;
-
-  justify-self: center;
-
-  align-self: stretch;
-
-  width: max-content;
-}
-
-
-.temperature {
-  color: #f7fafc;
-
-  font-size:
+  --tile-gap:
     clamp(
-      7.5rem,
-      10vw,
+      4px,
+      0.75vw,
+      12px
+    );
+
+  --temp-size:
+    clamp(
+      3.6rem,
+      9.5vw,
       10rem
     );
 
-  line-height: 0.77;
+  display:
+    grid;
 
-  font-weight: 680;
+  grid-template-columns:
+    max-content
+    minmax(
+      clamp(
+        230px,
+        45vw,
+        700px
+      ),
+      860px
+    );
 
-  letter-spacing: -0.085em;
+  align-items:
+    center;
 
-  white-space: nowrap;
+  gap:
+    clamp(
+      4px,
+      1.2vw,
+      18px
+    );
 
-  text-shadow:
-    0 10px 40px
-    rgba(0, 0, 0, 0.12);
+  width:
+    fit-content;
+
+  max-width:
+    100%;
+
+  margin:
+    auto;
 }
 
+/* ==================================================
+   CURRENT WEATHER
+================================================== */
 
-.hero-temp-caption {
-  margin-top: 10px;
+.current-summary {
+  display:
+    grid;
 
-  color: #869a93;
+  place-items:
+    center;
 
-  font-size: 0.76rem;
+  width:
+    max-content;
 
-  letter-spacing: 0.1em;
-
-  text-transform: uppercase;
-
-  text-align: center;
-
-  white-space: nowrap;
+  height:
+    calc(
+      2
+      * var(--tile-height)
+      + var(--tile-gap)
+    );
 }
 
+.current-reading {
+  display:
+    grid;
+
+  grid-template-columns:
+    max-content
+    clamp(
+      44px,
+      9vw,
+      145px
+    );
+
+  align-items:
+    stretch;
+
+  gap:
+    clamp(
+      4px,
+      1.1vw,
+      18px
+    );
+
+  width:
+    max-content;
+}
+
+.current-main {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    clamp(
+      3px,
+      0.65vw,
+      10px
+    );
+}
+
+.current-condition-icon {
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  flex:
+    none;
+
+  font-size:
+    clamp(
+      1.8rem,
+      5.8vw,
+      6.4rem
+    );
+
+  line-height:
+    1;
+}
+
+.current-temp {
+  margin:
+    0;
+
+  padding:
+    0;
+
+  color:
+    #f7fafc;
+
+  font-size:
+    var(--temp-size);
+
+  line-height:
+    0.78;
+
+  font-weight:
+    680;
+
+  letter-spacing:
+    -0.085em;
+
+  white-space:
+    nowrap;
+}
+
+.current-side-meta {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    flex-start;
+
+  align-self:
+    stretch;
+
+  min-width:
+    0;
+}
+
+.side-meta-block {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    flex-start;
+
+  gap:
+    clamp(
+      2px,
+      0.4vw,
+      7px
+    );
+}
+
+.side-meta-label {
+  color:
+    #81958e;
+
+  font-size:
+    clamp(
+      0.24rem,
+      0.76vw,
+      0.76rem
+    );
+
+  line-height:
+    1;
+
+  letter-spacing:
+    0.08em;
+
+  text-transform:
+    uppercase;
+
+  white-space:
+    nowrap;
+}
+
+.side-meta-value {
+  color:
+    #e4ece8;
+
+  font-size:
+    clamp(
+      0.5rem,
+      1.5vw,
+      1.45rem
+    );
+
+  font-weight:
+    550;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    -0.025em;
+
+  white-space:
+    nowrap;
+}
 
 /* ==================================================
    METRIC GRID
 ================================================== */
 
-.hero-meta {
-  grid-area: meta;
-
-  display: grid;
+.metric-grid {
+  display:
+    grid;
 
   grid-template-columns:
     repeat(
       4,
-      minmax(
-        0,
-        1fr
-      )
+      minmax(0, 1fr)
     );
 
   grid-template-rows:
     repeat(
       2,
-      1fr
+      var(--tile-height)
     );
 
-  gap: 10px;
+  gap:
+    var(--tile-gap);
 
-  width: 100%;
-  max-width: 800px;
-
-  justify-self: end;
-
-  align-self: stretch;
+  width:
+    min(
+      56vw,
+      860px
+    );
 }
 
+.metric-card {
+  display:
+    flex;
 
-/* ==================================================
-   METRIC TILES
-================================================== */
+  flex-direction:
+    column;
 
-.hero-meta-card {
-  position: relative;
+  justify-content:
+    center;
 
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: center;
-
-  min-width: 0;
-
-  min-height: 78px;
+  min-width:
+    0;
 
   padding:
-    11px 13px;
+    clamp(
+      6px,
+      0.9vw,
+      15px
+    );
 
-  overflow: hidden;
+  overflow:
+    hidden;
 
   border:
     1px solid
-    rgba(255, 255, 255, 0.065);
+    rgba(
+      255,
+      255,
+      255,
+      0.065
+    );
 
-  border-radius: 15px;
+  border-radius:
+    clamp(
+      7px,
+      1vw,
+      16px
+    );
 
   background:
     linear-gradient(
       145deg,
-      rgba(255, 255, 255, 0.06),
-      rgba(255, 255, 255, 0.027)
+      rgba(
+        255,
+        255,
+        255,
+        0.06
+      ),
+      rgba(
+        255,
+        255,
+        255,
+        0.027
+      )
     );
 
   box-shadow:
     inset
     0 1px 0
-    rgba(255, 255, 255, 0.035);
+    rgba(
+      255,
+      255,
+      255,
+      0.035
+    );
 }
 
+/* ==================================================
+   METRIC LABEL
+================================================== */
 
-.hero-meta-label {
-  display: block;
+.metric-label {
+  overflow:
+    hidden;
 
-  overflow: hidden;
+  margin-bottom:
+    clamp(
+      4px,
+      0.4vw,
+      7px
+    );
 
-  margin-bottom: 5px;
-
-  color: #81958e;
-
-  font-size: 0.63rem;
-
-  letter-spacing: 0.1em;
-
-  text-transform: uppercase;
-
-  text-overflow: ellipsis;
-
-  white-space: nowrap;
-}
-
-
-.hero-meta-value {
-  overflow: hidden;
-
-  color: #edf4f1;
+  color:
+    #93a59e;
 
   font-size:
     clamp(
-      1rem,
-      1.5vw,
-      1.28rem
+      0.4rem,
+      0.76vw,
+      0.74rem
     );
 
-  font-weight: 540;
+  font-weight:
+    550;
 
-  line-height: 1;
+  line-height:
+    1;
 
-  letter-spacing: -0.02em;
+  letter-spacing:
+    0.08em;
 
-  text-overflow: ellipsis;
+  text-transform:
+    uppercase;
 
-  white-space: nowrap;
+  text-overflow:
+    ellipsis;
+
+  white-space:
+    nowrap;
 }
-
-
-.hero-meta-sub {
-  overflow: hidden;
-
-  margin-top: 4px;
-
-  color: #849991;
-
-  font-size: 0.58rem;
-
-  letter-spacing: 0.055em;
-
-  text-transform: uppercase;
-
-  text-overflow: ellipsis;
-
-  white-space: nowrap;
-}
-
 
 /* ==================================================
-   FROG SHARED
+   METRIC VALUE ROW
+================================================== */
+
+.metric-main-row {
+  display:
+    flex;
+
+  align-items:
+    baseline;
+
+  justify-content:
+    flex-start;
+
+  gap:
+    clamp(
+      8px,
+      0.7vw,
+      14px
+    );
+
+  min-width:
+    0;
+
+  white-space:
+    nowrap;
+}
+
+/* ==================================================
+   METRIC MAIN VALUE
+================================================== */
+
+.metric-value {
+  flex:
+    0 0 auto;
+
+  min-width:
+    0;
+
+  color:
+    #f1f6f4;
+
+  font-size:
+    clamp(
+      0.72rem,
+      1.55vw,
+      1.5rem
+    );
+
+  font-weight:
+    600;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    -0.025em;
+
+  white-space:
+    nowrap;
+}
+
+/* ==================================================
+   METRIC SECONDARY INFO
+================================================== */
+
+.metric-meta {
+  display:
+    flex;
+
+  align-items:
+    baseline;
+
+  justify-content:
+    flex-start;
+
+  gap:
+    clamp(
+      4px,
+      0.4vw,
+      8px
+    );
+
+  min-width:
+    0;
+
+  color:
+    #e1e8e5;
+
+  font-size:
+    clamp(
+      0.5rem,
+      0.78vw,
+      0.76rem
+    );
+
+  font-weight:
+    520;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    -0.01em;
+
+  white-space:
+    nowrap;
+}
+
+.metric-meta span {
+  min-width:
+    0;
+
+  white-space:
+    nowrap;
+}
+
+/* ==================================================
+   SPECIAL METRICS
+================================================== */
+
+.metric-card.sun
+.metric-value {
+  font-size:
+    clamp(
+      0.68rem,
+      1.4vw,
+      1.35rem
+    );
+}
+
+.metric-card.moon
+.metric-value {
+  font-size:
+    clamp(
+      1.1rem,
+      2vw,
+      1.9rem
+    );
+
+  line-height:
+    1;
+}
+
+/* ==================================================
+   FROG ART
 ================================================== */
 
 .frog-card {
-  position: relative;
+  position:
+    relative;
 
-  width: 100%;
+  width:
+    100%;
 
-  padding: 0;
+  overflow:
+    hidden;
 
-  overflow: hidden;
-
-  background: transparent;
+  background:
+    transparent;
 }
 
-
-/* ==================================================
-   WIDE FROG
-
-   At narrower widths the artwork stops shrinking.
-   Instead, the sides are cropped.
-================================================== */
-
-.hero-card
 .frog-card.wide {
-  position: relative;
-
-  width: 100%;
-
-  height: auto;
-
-  margin: 0;
-
-  overflow: hidden;
-
-  border-radius: 0;
+  border-radius:
+    0;
 }
-
 
 .frog-wide-image {
-  position: relative;
+  position:
+    relative;
 
-  display: block;
+  left:
+    50%;
 
-  width: 100%;
+  display:
+    block;
 
-  max-width: none;
+  width:
+    max(
+      100%,
+      clamp(
+        1000px,
+        90vw,
+        1250px
+      )
+    );
 
-  height: auto;
+  max-width:
+    none;
 
-  margin: 0;
-
-  left: 50%;
+  height:
+    auto;
 
   transform:
     translateX(-50%);
-
-  object-fit: initial;
-
-  object-position:
-    center bottom;
 }
 
+/* ==================================================
+   FORECAST
+================================================== */
+
+.forecast-strip {
+  display:
+    grid;
+
+  width:
+    100%;
+
+  margin-top:
+    clamp(
+      10px,
+      1vw,
+      14px
+    );
+
+  gap:
+    clamp(
+      8px,
+      0.8vw,
+      12px
+    );
+}
+
+.forecast-strip-split {
+  grid-template-columns:
+    minmax(0, 0.72fr)
+    minmax(0, 1.28fr);
+}
+
+.forecast-strip-full {
+  grid-template-columns:
+    1fr;
+}
+
+.forecast-glass {
+  min-width:
+    0;
+
+  padding:
+    clamp(
+      12px,
+      1.25vw,
+      18px
+    );
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.09
+    );
+
+  border-radius:
+    clamp(
+      18px,
+      1.6vw,
+      26px
+    );
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        255,
+        255,
+        255,
+        0.065
+      ),
+      rgba(
+        255,
+        255,
+        255,
+        0.022
+      )
+    );
+
+  box-shadow:
+    0 18px 45px
+    rgba(
+      0,
+      0,
+      0,
+      0.16
+    ),
+    inset
+    0 1px 0
+    rgba(
+      255,
+      255,
+      255,
+      0.04
+    );
+
+  backdrop-filter:
+    blur(16px);
+
+  -webkit-backdrop-filter:
+    blur(16px);
+}
+
+.precip-panel {
+  overflow:
+    hidden;
+}
+
+.week-panel {
+  display:
+    block;
+
+  min-width:
+    0;
+
+  overflow:
+    visible;
+
+  padding:
+    clamp(
+      12px,
+      1.25vw,
+      18px
+    )
+    clamp(
+      4px,
+      0.55vw,
+      9px
+    );
+}
+
+/* ==================================================
+   FORECAST HEADER
+================================================== */
+
+.forecast-section-header {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    8px;
+
+  margin-bottom:
+    8px;
+
+  color:
+    #81958e;
+
+  font-size:
+    clamp(
+      0.55rem,
+      0.72vw,
+      0.72rem
+    );
+
+  font-weight:
+    600;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    0.1em;
+
+  text-transform:
+    uppercase;
+}
+
+.forecast-section-note {
+  color:
+    #6f837c;
+
+  font-size:
+    0.88em;
+}
+
+/* ==================================================
+   PRECIP GRAPH
+================================================== */
+
+.mini-precip-chart {
+  width:
+    100%;
+}
+
+.mini-precip-percent-row,
+.mini-precip-time-row {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      8,
+      minmax(0, 1fr)
+    );
+
+  text-align:
+    center;
+}
+
+.mini-precip-percent-row {
+  color:
+    #82b4df;
+
+  font-size:
+    clamp(
+      0.5rem,
+      0.6vw,
+      0.62rem
+    );
+
+  font-weight:
+    600;
+}
+
+.mini-precip-time-row {
+  color:
+    #798e87;
+
+  font-size:
+    clamp(
+      0.44rem,
+      0.54vw,
+      0.56rem
+    );
+}
+
+.mini-precip-svg {
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    clamp(
+      40px,
+      4vw,
+      60px
+    );
+}
+
+.mini-precip-baseline {
+  stroke:
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  stroke-width:
+    1;
+}
+
+.mini-precip-area {
+  fill:
+    rgba(
+      101,
+      169,
+      224,
+      0.11
+    );
+}
+
+.mini-precip-line {
+  fill:
+    none;
+
+  stroke:
+    #79b8e8;
+
+  stroke-width:
+    3;
+
+  stroke-linecap:
+    round;
+
+  stroke-linejoin:
+    round;
+
+  vector-effect:
+    non-scaling-stroke;
+}
+
+/* ==================================================
+   WEEK FORECAST
+================================================== */
+
+.mini-week {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      8,
+      minmax(0, 1fr)
+    );
+
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  margin:
+    0;
+
+  gap:
+    0;
+}
+
+.mini-day {
+  min-width:
+    0;
+
+  width:
+    100%;
+
+  padding:
+    0;
+
+  text-align:
+    center;
+}
+
+.mini-day-name {
+  display:
+    block;
+
+  width:
+    100%;
+
+  margin:
+    0 0
+    clamp(
+      8px,
+      0.7vw,
+      11px
+    );
+
+  color:
+    #81958e;
+
+  font-size:
+    clamp(
+      0.55rem,
+      0.72vw,
+      0.72rem
+    );
+
+  font-weight:
+    600;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    0.1em;
+
+  text-transform:
+    uppercase;
+
+  white-space:
+    nowrap;
+}
+
+.mini-day-icon {
+  display:
+    block;
+
+  width:
+    100%;
+
+  margin:
+    0 0
+    clamp(
+      4px,
+      0.35vw,
+      6px
+    );
+
+  font-size:
+    clamp(
+      1.9rem,
+      2.8vw,
+      3rem
+    );
+
+  line-height:
+    1;
+}
+
+.mini-day-temps {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    clamp(
+      1px,
+      0.2vw,
+      4px
+    );
+
+  font-size:
+    clamp(
+      0.5rem,
+      0.7vw,
+      0.72rem
+    );
+
+  white-space:
+    nowrap;
+}
+
+.mini-day-high {
+  color:
+    #e9f2ee;
+
+  font-weight:
+    650;
+}
+
+.mini-day-low {
+  color:
+    #82968f;
+}
+
+.mini-day-rain {
+  margin-top:
+    3px;
+
+  color:
+    #76a6cc;
+
+  font-size:
+    clamp(
+      0.4rem,
+      0.52vw,
+      0.53rem
+    );
+
+  white-space:
+    nowrap;
+}
 
 /* ==================================================
    SQUARE BACKUP
 ================================================== */
 
 .frog-card.square {
-  position: relative;
-
-  aspect-ratio: 1 / 1;
-
-  overflow: hidden;
+  aspect-ratio:
+    1;
 }
-
-
-.frog-scene {
-  position: absolute;
-
-  inset: 0;
-
-  width: 100%;
-
-  height: 100%;
-}
-
 
 .scene-layer {
-  position: absolute;
+  position:
+    absolute;
 
-  inset: 0;
+  inset:
+    0;
 
-  width: 100%;
+  width:
+    100%;
 
-  height: 100%;
+  height:
+    100%;
 
-  object-fit: contain;
-
-  pointer-events: none;
+  object-fit:
+    contain;
 }
-
 
 .layer-1 {
-  z-index: 1;
+  z-index:
+    1;
 }
-
 
 .layer-2 {
-  z-index: 2;
+  z-index:
+    2;
 }
-
 
 .layer-3 {
-  z-index: 3;
+  z-index:
+    3;
 }
-
-
-/* ==================================================
-   SQUARE BACKUP DASHBOARD
-================================================== */
 
 .square-dashboard-card {
   width:
@@ -712,327 +1446,254 @@ h1 {
       780px
     );
 
-  margin: 0 auto;
+  margin:
+    auto;
 
-  overflow: hidden;
+  overflow:
+    hidden;
 
-  border-radius: 30px;
+  border-radius:
+    30px;
 
   background:
-    rgba(255, 255, 255, 0.035);
+    rgba(
+      255,
+      255,
+      255,
+      0.035
+    );
 }
 
+.square-frame {
+  position:
+    relative;
 
-.square-hero-frame {
-  position: relative;
+  aspect-ratio:
+    1;
 
-  width: 100%;
-
-  aspect-ratio: 1 / 1;
-
-  overflow: hidden;
+  overflow:
+    hidden;
 }
 
+.square-frame
+> .frog-card {
+  position:
+    absolute;
 
-.square-hero-frame
-> .frog-card.square {
-  position: absolute;
+  inset:
+    0;
 
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-
-  margin: 0;
-
-  border-radius: 0;
+  height:
+    100%;
 }
 
+.square-overlay {
+  position:
+    absolute;
 
-.square-weather-overlay {
-  position: absolute;
+  z-index:
+    10;
 
-  z-index: 10;
+  inset:
+    0 0 auto;
 
-  top: 0;
-  left: 0;
-  right: 0;
+  display:
+    grid;
+
+  grid-template-columns:
+    150px
+    1fr;
+
+  gap:
+    12px;
 
   padding:
     18px;
 
-  pointer-events: none;
-
   background:
     linear-gradient(
       to bottom,
-      rgba(6, 12, 17, 0.92) 0%,
-      rgba(6, 12, 17, 0.78) 56%,
-      rgba(6, 12, 17, 0.3) 82%,
-      transparent 100%
+      rgba(
+        6,
+        12,
+        17,
+        0.92
+      ),
+      rgba(
+        6,
+        12,
+        17,
+        0.6
+      )
+      65%,
+      transparent
     );
 }
 
+.square-summary {
+  color:
+    #b0c0ba;
 
-.square-top-panel {
-  display: grid;
-
-  grid-template-columns:
-    150px
-    minmax(
-      0,
-      1fr
-    );
-
-  gap: 14px;
+  font-size:
+    0.55rem;
 }
 
+.square-condition {
+  display:
+    inline-flex;
 
-.square-temp-column {
-  display: flex;
+  gap:
+    5px;
 
-  flex-direction: column;
-
-  align-items: center;
-
-  width: max-content;
-}
-
-
-.square-temperature {
-  color: #f4f8f6;
-
-  font-size: 6rem;
-
-  line-height: 0.8;
-
-  font-weight: 690;
-
-  letter-spacing: -0.085em;
-
-  white-space: nowrap;
-}
-
-
-.square-temp-caption {
-  margin-top: 7px;
-
-  color: #8ea29b;
-
-  font-size: 0.58rem;
-
-  letter-spacing: 0.08em;
-
-  text-transform: uppercase;
-
-  white-space: nowrap;
-}
-
-
-.square-info-column {
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 7px;
-
-  min-width: 0;
-}
-
-
-.square-condition-line {
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  gap: 8px;
-}
-
-
-.square-condition-pill {
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 7px;
+  margin-bottom:
+    8px;
 
   padding:
-    5px 10px;
+    4px 8px;
 
   border:
     1px solid
-    rgba(255, 255, 255, 0.09);
-
-  border-radius: 999px;
-
-  background:
-    rgba(17, 27, 33, 0.48);
-
-  color: #eef4f1;
-}
-
-
-.square-overlay-time {
-  color:
-    rgba(235, 242, 239, 0.68);
-
-  font-size: 0.6rem;
-}
-
-
-.square-mini-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(
-      4,
-      minmax(
-        0,
-        1fr
-      )
+    rgba(
+      255,
+      255,
+      255,
+      0.09
     );
 
-  gap: 5px;
+  border-radius:
+    999px;
+
+  color:
+    #eef4f1;
+
+  background:
+    rgba(
+      17,
+      27,
+      33,
+      0.48
+    );
+
+  font-size:
+    0.65rem;
 }
 
+.square-temp {
+  margin-bottom:
+    8px;
 
-.square-mini-card {
-  display: grid;
+  color:
+    #f4f8f6;
 
-  grid-template-columns:
-    1fr auto;
+  font-size:
+    6rem;
 
-  grid-template-areas:
-    "label value"
-    "sub sub";
+  font-weight:
+    690;
 
-  min-height: 36px;
+  line-height:
+    0.8;
 
+  letter-spacing:
+    -0.085em;
+}
+
+.metric-grid.compact {
+  width:
+    100%;
+
+  --tile-height:
+    38px;
+
+  --tile-gap:
+    5px;
+}
+
+.metric-grid.compact
+.metric-card {
   padding:
     5px 7px;
-
-  border:
-    1px solid
-    rgba(255, 255, 255, 0.075);
-
-  border-radius: 9px;
-
-  background:
-    rgba(14, 23, 29, 0.34);
 }
 
-
-.square-mini-label {
-  grid-area: label;
-
-  color: #8ea29b;
-
-  font-size: 0.43rem;
-
-  text-transform: uppercase;
+.metric-grid.compact
+.metric-label {
+  font-size:
+    0.4rem;
 }
 
-
-.square-mini-value {
-  grid-area: value;
-
-  color: #f0f5f3;
-
-  font-size: 0.7rem;
-
-  text-align: right;
+.metric-grid.compact
+.metric-value {
+  font-size:
+    0.65rem;
 }
 
-
-.square-mini-sub {
-  grid-area: sub;
-
-  margin-top: 2px;
-
-  color: #7f938c;
-
-  font-size: 0.36rem;
-
-  text-align: right;
-
-  text-transform: uppercase;
+.metric-grid.compact
+.metric-meta {
+  font-size:
+    0.45rem;
 }
-
 
 /* ==================================================
-   FOOTER
-================================================== */
-
-footer {
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  gap: 14px;
-
-  margin-top: 12px;
-
-  padding:
-    12px 18px;
-
-  border-radius: 20px;
-
-  color: #91a39d;
-
-  background:
-    rgba(255, 255, 255, 0.025);
-
-  font-size: 0.88rem;
-}
-
-
-.dot {
-  opacity: 0.45;
-}
-
-
-/* ==================================================
-   DECORATIVE GLOWS
+   DECORATION
 ================================================== */
 
 .glow {
-  position: absolute;
+  position:
+    absolute;
 
-  border-radius: 999px;
+  border-radius:
+    50%;
 
-  filter: blur(90px);
+  filter:
+    blur(90px);
 
-  pointer-events: none;
+  pointer-events:
+    none;
 }
-
 
 .glow-one {
-  width: 380px;
-  height: 380px;
+  width:
+    380px;
 
-  top: -150px;
-  right: -80px;
+  height:
+    380px;
+
+  top:
+    -150px;
+
+  right:
+    -80px;
 
   background:
-    rgba(127, 194, 164, 0.13);
+    rgba(
+      127,
+      194,
+      164,
+      0.13
+    );
 }
-
 
 .glow-two {
-  width: 330px;
-  height: 330px;
+  width:
+    330px;
 
-  bottom: -160px;
-  left: -80px;
+  height:
+    330px;
+
+  bottom:
+    -160px;
+
+  left:
+    -80px;
 
   background:
-    rgba(93, 137, 153, 0.11);
+    rgba(
+      93,
+      137,
+      153,
+      0.11
+    );
 }
-
 
 /* ==================================================
    LOADING / ERROR
@@ -1040,655 +1701,230 @@ footer {
 
 .loading,
 .error-card {
-  position: relative;
+  position:
+    relative;
 
-  z-index: 2;
+  z-index:
+    2;
 
-  padding: 32px;
-
-  border-radius: 24px;
-
-  color: #f7fafc;
-
-  background:
-    rgba(255, 255, 255, 0.05);
+  padding:
+    32px;
 
   border:
     1px solid
-    rgba(255, 255, 255, 0.08);
-}
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
 
+  border-radius:
+    24px;
+
+  color:
+    #f7fafc;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.05
+    );
+}
 
 .error-card {
-  max-width: 440px;
+  max-width:
+    440px;
 
-  text-align: center;
+  text-align:
+    center;
 }
-
 
 .error-card .frog {
-  font-size: 5rem;
+  font-size:
+    5rem;
 }
 
-
 .error-card button {
-  border: 0;
-
-  border-radius: 999px;
-
   padding:
     12px 18px;
 
-  cursor: pointer;
+  border:
+    0;
 
-  background: #cfe8d8;
+  border-radius:
+    999px;
 
-  color: #132119;
+  cursor:
+    pointer;
+
+  color:
+    #132119;
+
+  background:
+    #cfe8d8;
 }
 
-
 /* ==================================================
-   MEDIUM / LAPTOP
-   901px - 1300px
+   RESPONSIVE
 ================================================== */
 
-@media
-(max-width: 1300px)
-and
-(min-width: 901px) {
+@media (
+  max-width:
+    900px
+) {
 
-  .hero-copy {
-    padding:
-      27px
-      clamp(
-        26px,
-        3vw,
-        42px
-      )
-      42px;
-  }
-
-
-  .hero-main {
+  .forecast-strip-split {
     grid-template-columns:
-      minmax(
-        210px,
-        255px
-      )
-      minmax(
-        0,
-        1fr
-      );
-
-    grid-template-rows:
-      36px 1fr;
-
-    column-gap:
-      clamp(
-        20px,
-        3vw,
-        38px
-      );
-
-    row-gap: 3px;
-  }
-
-
-  .hero-badge {
-    min-height: 34px;
-
-    padding:
-      5px 12px;
-
-    gap: 8px;
-
-    font-size: 0.86rem;
-  }
-
-
-  .weather-icon {
-    font-size: 1.1em;
-  }
-
-
-  .temperature {
-    font-size:
-      clamp(
-        6.2rem,
-        9vw,
-        7.6rem
-      );
-
-    line-height: 0.77;
-  }
-
-
-  .hero-temp-caption {
-    margin-top: 8px;
-
-    font-size: 0.62rem;
-
-    letter-spacing: 0.08em;
-  }
-
-
-  .hero-meta {
-    gap: 7px;
-  }
-
-
-  .hero-meta-card {
-    min-height: 64px;
-
-    padding:
-      8px 10px;
-
-    border-radius: 12px;
-  }
-
-
-  .hero-meta-label {
-    margin-bottom: 4px;
-
-    font-size: 0.54rem;
-
-    letter-spacing: 0.075em;
-  }
-
-
-  .hero-meta-value {
-    font-size:
-      clamp(
-        0.86rem,
-        1.45vw,
-        1.08rem
-      );
-  }
-
-
-  .hero-meta-sub {
-    margin-top: 3px;
-
-    font-size: 0.49rem;
-  }
-
-
-  /*
-     Keep Frog scene physically large.
-     Card simply clips the sides.
-  */
-
-  .frog-wide-image {
-    width:
-      max(
-        100%,
-        1250px
-      );
-
-    max-width: none;
+      1fr;
   }
 
 }
 
-
-/* ==================================================
-   NARROW
-   651px - 900px
-
-   Still condition/temp beside 4×2 grid.
-================================================== */
-
-@media
-(max-width: 900px)
-and
-(min-width: 651px) {
-
-  .shell {
-    padding:
-      12px;
-  }
-
+@media (
+  max-width:
+    650px
+) {
 
   header {
-    margin-bottom: 10px;
+    align-items:
+      flex-start;
 
-    padding:
-      14px 18px;
-  }
+    flex-direction:
+      column;
 
-
-  .hero-copy {
-    padding:
-      20px
-      18px
-      32px;
-  }
-
-
-  .hero-main {
-    grid-template-columns:
-      minmax(
-        155px,
-        185px
-      )
-      minmax(
-        0,
-        1fr
-      );
-
-    grid-template-rows:
-      31px 1fr;
-
-    column-gap: 14px;
-
-    row-gap: 2px;
-  }
-
-
-  .hero-badge {
-    min-height: 29px;
-
-    padding:
-      4px 9px;
-
-    gap: 6px;
-
-    font-size: 0.73rem;
-  }
-
-
-  .temperature {
-    font-size:
-      clamp(
-        4.8rem,
-        10vw,
-        6rem
-      );
-  }
-
-
-  .hero-temp-caption {
-    margin-top: 6px;
-
-    font-size: 0.5rem;
-  }
-
-
-  .hero-meta {
-    gap: 5px;
-  }
-
-
-  .hero-meta-card {
-    min-height: 52px;
-
-    padding:
-      6px 7px;
-
-    border-radius: 10px;
-  }
-
-
-  .hero-meta-label {
-    margin-bottom: 3px;
-
-    font-size: 0.44rem;
-  }
-
-
-  .hero-meta-value {
-    font-size:
-      clamp(
-        0.68rem,
-        1.7vw,
-        0.88rem
-      );
-  }
-
-
-  .hero-meta-sub {
-    margin-top: 2px;
-
-    font-size: 0.4rem;
-  }
-
-
-  .frog-wide-image {
-    width: 1250px;
-
-    max-width: none;
-  }
-
-
-  footer {
-    margin-top: 10px;
-  }
-
-}
-
-
-/* ==================================================
-   SMALL
-   <= 650px
-
-   Still one horizontal information strip.
-================================================== */
-
-@media
-(max-width: 650px) {
-
-  .shell {
-    padding: 9px;
-  }
-
-
-  header {
-    align-items: flex-start;
-
-    flex-direction: column;
-
-    gap: 5px;
+    gap:
+      5px;
 
     padding:
       10px 12px;
 
-    margin-bottom: 8px;
-
-    border-radius: 18px;
+    border-radius:
+      18px;
   }
 
-
-  header h1 {
-    font-size: 1.32rem;
+  h1 {
+    font-size:
+      1.32rem;
   }
-
 
   .kicker,
   .updated {
-    font-size: 0.55rem;
+    font-size:
+      0.55rem;
   }
-
 
   .hero-card {
-    border-radius: 22px;
+    border-radius:
+      22px;
   }
 
-
-  .hero-copy {
-    padding:
-      14px
-      11px
-      24px;
+  .forecast-glass {
+    border-radius:
+      20px;
   }
 
-
-  .hero-main {
-    grid-template-columns:
-      minmax(
-        112px,
-        132px
-      )
-      minmax(
-        0,
-        1fr
-      );
-
-    grid-template-rows:
-      26px 1fr;
-
-    column-gap: 8px;
-
-    row-gap: 1px;
+  .metric-main-row {
+    gap:
+      5px;
   }
 
+  .metric-meta {
+    gap:
+      4px;
 
-  .hero-badge {
-    min-height: 24px;
-
-    padding:
-      2px 7px;
-
-    gap: 5px;
-
-    font-size: 0.62rem;
-  }
-
-
-  .temperature {
     font-size:
       clamp(
-        3.7rem,
-        12vw,
-        4.6rem
+        0.42rem,
+        1.2vw,
+        0.66rem
       );
-
-    line-height: 0.76;
-  }
-
-
-  .hero-temp-caption {
-    margin-top: 4px;
-
-    font-size: 0.4rem;
-  }
-
-
-  .hero-meta {
-    gap: 4px;
-  }
-
-
-  .hero-meta-card {
-    min-height: 42px;
-
-    padding:
-      4px 5px;
-
-    border-radius: 8px;
-  }
-
-
-  .hero-meta-label {
-    margin-bottom: 2px;
-
-    font-size: 0.36rem;
-
-    letter-spacing: 0.035em;
-  }
-
-
-  .hero-meta-value {
-    font-size:
-      clamp(
-        0.55rem,
-        2.1vw,
-        0.72rem
-      );
-  }
-
-
-  .hero-meta-sub {
-    margin-top: 1px;
-
-    font-size: 0.33rem;
-  }
-
-
-  .frog-wide-image {
-    width: 1150px;
-
-    max-width: none;
-  }
-
-
-  footer {
-    margin-top: 8px;
-
-    padding:
-      9px 12px;
-
-    font-size: 0.67rem;
   }
 
 }
 
+@media (
+  max-width:
+    560px
+) {
 
-/* ==================================================
-   VERY SMALL
-   <= 470px
+  .week-panel {
+    overflow-x:
+      auto;
 
-   Same layout.
-   Only spacing/type compresses.
-================================================== */
-
-@media
-(max-width: 470px) {
-
-  .shell {
-    padding: 7px;
+    overflow-y:
+      visible;
   }
 
+  .mini-week {
+    min-width:
+      560px;
+
+    grid-template-columns:
+      repeat(
+        8,
+        minmax(
+          65px,
+          1fr
+        )
+      );
+  }
+
+  .metric-main-row {
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+
+    gap:
+      4px;
+  }
+
+  .metric-meta {
+    width:
+      100%;
+
+    flex-wrap:
+      wrap;
+  }
+
+}
+
+@media (
+  max-width:
+    470px
+) {
 
   header {
     padding:
       9px 10px;
-
-    margin-bottom: 7px;
   }
 
-
-  header h1 {
-    font-size: 1.15rem;
+  h1 {
+    font-size:
+      1.15rem;
   }
 
-
-  .hero-copy {
+  .forecast-glass {
     padding:
-      9px
-      7px
-      17px;
+      10px 7px;
   }
 
-
-  .hero-main {
-    grid-template-columns:
-      minmax(
-        84px,
-        98px
-      )
-      minmax(
-        0,
-        1fr
-      );
-
-    grid-template-rows:
-      22px 1fr;
-
-    column-gap: 5px;
-
-    row-gap: 0;
-  }
-
-
-  .hero-badge {
-    min-height: 20px;
-
-    padding:
-      1px 5px;
-
-    gap: 4px;
-
-    font-size: 0.51rem;
-
-    border-radius: 8px;
-  }
-
-
-  .temperature {
+  .mini-day-icon {
     font-size:
       clamp(
-        3rem,
-        13vw,
-        3.7rem
+        1.25rem,
+        6vw,
+        1.8rem
       );
   }
 
-
-  .hero-temp-caption {
-    margin-top: 3px;
-
-    font-size: 0.32rem;
-
-    letter-spacing: 0.025em;
-  }
-
-
-  .hero-meta {
-    grid-template-columns:
-      repeat(
-        4,
-        minmax(
-          0,
-          1fr
-        )
-      );
-
-    gap: 3px;
-  }
-
-
-  .hero-meta-card {
-    min-height: 34px;
-
-    padding:
-      3px;
-
-    border-radius: 6px;
-  }
-
-
-  .hero-meta-label {
-    margin-bottom: 1px;
-
-    font-size: 0.285rem;
-
-    letter-spacing: 0.015em;
-  }
-
-
-  .hero-meta-value {
-    font-size:
-      clamp(
-        0.43rem,
-        2vw,
-        0.57rem
-      );
-  }
-
-
-  .hero-meta-sub {
-    margin-top: 1px;
-
-    font-size: 0.265rem;
-
-    letter-spacing: 0;
-  }
-
-
-  .frog-wide-image {
-    width: 1000px;
-
-    max-width: none;
-  }
-
-
-  footer {
-    margin-top: 7px;
-
-    padding:
-      7px 9px;
-
-    font-size: 0.6rem;
+  .mini-day-temps {
+    gap:
+      1px;
   }
 
 }
